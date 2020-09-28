@@ -1,0 +1,8 @@
+name: Cosmetics_by_Groodian
+version: 3.2
+author: Groodian
+main: de.groodian.cosmetics.main.Main
+
+commands:
+   cosmetics:
+      description: Cosmetics-GUI
