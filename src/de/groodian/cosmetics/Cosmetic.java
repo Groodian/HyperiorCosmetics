@@ -1,38 +1,29 @@
 package de.groodian.cosmetics;
 
+import org.bukkit.inventory.ItemStack;
+
 public abstract class Cosmetic {
 
-    private CosmeticPlayer cosmeticPlayer;
-    private int id;
-    private String name;
-    private CosmeticType type;
-    private int price;
-    private boolean owning;
-    private boolean activated;
+    protected Class<? extends CosmeticHandler<?>> clazz;
+    protected int id;
+    protected String name;
+    protected Category category;
+    protected int price;
+    protected Rarity rarity;
+    protected ItemStack inventoryItem;
 
-    public Cosmetic(CosmeticPlayer cosmeticPlayer, int id, String name, CosmeticType type, int price, boolean owning, boolean activated) {
-        this.cosmeticPlayer = cosmeticPlayer;
+    public Cosmetic(Class<? extends CosmeticHandler<?>> clazz, int id, String name, Category category, int price, Rarity rarity, ItemStack inventoryItem) {
+        this.clazz = clazz;
         this.id = id;
         this.name = name;
-        this.type = type;
+        this.category = category;
         this.price = price;
-        this.owning = owning;
-        this.activated = activated;
+        this.rarity = rarity;
+        this.inventoryItem = inventoryItem;
     }
 
-    public void activate() {
-        CosmeticMySQL.activate(cosmeticPlayer.get);
-        onActivation();
-    }
-
-    protected abstract void onActivation();
-
-    protected abstract void onUpdate();
-
-    protected abstract void onDeactivation();
-
-    public CosmeticPlayer getCosmeticPlayer() {
-        return cosmeticPlayer;
+    public Class<? extends CosmeticHandler<?>> getClazz() {
+        return clazz;
     }
 
     public int getId() {
@@ -43,20 +34,20 @@ public abstract class Cosmetic {
         return name;
     }
 
-    public CosmeticType getType() {
-        return type;
+    public Category getCategory() {
+        return category;
     }
 
     public int getPrice() {
         return price;
     }
 
-    public boolean isOwning() {
-        return owning;
+    public Rarity getRarity() {
+        return rarity;
     }
 
-    public boolean isActivated() {
-        return activated;
+    public ItemStack getInventoryItem() {
+        return inventoryItem;
     }
 
 }

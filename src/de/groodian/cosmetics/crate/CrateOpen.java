@@ -1,6 +1,6 @@
 package de.groodian.cosmetics.crate;
 
-import de.groodian.hyperiorcore.main.HyperiorCore;
+import de.groodian.cosmetics.Main;
 import de.groodian.hyperiorcore.util.HSound;
 import de.groodian.hyperiorcore.util.ItemBuilder;
 import org.bukkit.Bukkit;
@@ -214,13 +214,8 @@ public class CrateOpen {
                                 int ran = new Random().nextInt(gewoehnlichItem.length);
                                 play3LevelUpFor(player);
                                 setFrame(new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 0).setName("§7Dein Gewinn: " + gewoehnlichItem[ran].build().getItemMeta().getDisplayName()).build());
-                                if (Cosmetics.has(player, gewoehnlich[ran])) {
-                                    inventory.setItem(13, gewoehnlichItem[ran].setLore("§7Seltenheit: Gewöhnlich", "", "§cDu besitzt diesen Gegenstand bereits.", "§cDeswegen wurde der Gegenstand", "§cfür §e200 §6Coins §cverkauft.").build());
-                                    HyperiorCore.getCoinSystem().addCoins(player, 200, false);
-                                } else {
-                                    inventory.setItem(13, gewoehnlichItem[ran].setLore("§7Seltenheit: Gewöhnlich").build());
-                                    Cosmetics.add(player, gewoehnlich[ran]);
-                                }
+
+
                             }, delay[count]);
                         }
                         if (!stopped) {
@@ -245,13 +240,8 @@ public class CrateOpen {
                                 int ran = new Random().nextInt(ungewoehnlichItem.length);
                                 play3LevelUpFor(player);
                                 setFrame(new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 5).setName("§7Dein Gewinn: " + ungewoehnlichItem[ran].build().getItemMeta().getDisplayName()).build());
-                                if (Cosmetics.has(player, ungewoehnlich[ran])) {
-                                    inventory.setItem(13, ungewoehnlichItem[ran].setLore("§7Seltenheit: §aUngewöhnlich", "", "§cDu besitzt diesen Gegenstand bereits.", "§cDeswegen wurde der Gegenstand", "§cfür §e400 §6Coins §cverkauft.").build());
-                                    HyperiorCore.getCoinSystem().addCoins(player, 400, false);
-                                } else {
-                                    inventory.setItem(13, ungewoehnlichItem[ran].setLore("§7Seltenheit: §aUngewöhnlich").build());
-                                    Cosmetics.add(player, ungewoehnlich[ran]);
-                                }
+
+
                             }, delay[count]);
                         }
                         if (!stopped) {
@@ -276,13 +266,8 @@ public class CrateOpen {
                                 int ran = new Random().nextInt(seltenItem.length);
                                 play3LevelUpFor(player);
                                 setFrame(new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 11).setName("§7Dein Gewinn: " + seltenItem[ran].build().getItemMeta().getDisplayName()).build());
-                                if (Cosmetics.has(player, selten[ran])) {
-                                    inventory.setItem(13, seltenItem[ran].setLore("§7Seltenheit: §9Selten", "", "§cDu besitzt diesen Gegenstand bereits.", "§cDeswegen wurde der Gegenstand", "§cfür §e800 §6Coins §cverkauft.").build());
-                                    HyperiorCore.getCoinSystem().addCoins(player, 800, false);
-                                } else {
-                                    inventory.setItem(13, seltenItem[ran].setLore("§7Seltenheit: §9Selten").build());
-                                    Cosmetics.add(player, selten[ran]);
-                                }
+
+
                             }, delay[count]);
                         }
                         if (!stopped) {
@@ -307,13 +292,8 @@ public class CrateOpen {
                                 int ran = new Random().nextInt(epischItem.length);
                                 play3LevelUpFor(player);
                                 setFrame(new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 2).setName("§7Dein Gewinn: " + epischItem[ran].build().getItemMeta().getDisplayName()).build());
-                                if (Cosmetics.has(player, episch[ran])) {
-                                    inventory.setItem(13, epischItem[ran].setLore("§7Seltenheit: §dEpisch", "", "§cDu besitzt diesen Gegenstand bereits.", "§cDeswegen wurde der Gegenstand", "§cfür §e3.200 §6Coins §cverkauft.").build());
-                                    HyperiorCore.getCoinSystem().addCoins(player, 3200, false);
-                                } else {
-                                    inventory.setItem(13, epischItem[ran].setLore("§7Seltenheit: §dEpisch").build());
-                                    Cosmetics.add(player, episch[ran]);
-                                }
+
+
                             }, delay[count]);
                         }
                         if (!stopped) {
@@ -343,13 +323,8 @@ public class CrateOpen {
                                 int ran = new Random().nextInt(legendaerItem.length);
                                 play3LevelUpFor(player);
                                 setFrame(new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 3).setName("§7Dein Gewinn: " + legendaerItem[ran].build().getItemMeta().getDisplayName()).build());
-                                if (Cosmetics.has(player, legendaer[ran])) {
-                                    inventory.setItem(13, legendaerItem[ran].setLore("§7Seltenheit: §bLegendär", "", "§cDu besitzt diesen Gegenstand bereits.", "§cDeswegen wurde der Gegenstand", "§cfür §e6.400 §6Coins §cverkauft.").build());
-                                    HyperiorCore.getCoinSystem().addCoins(player, 6400, false);
-                                } else {
-                                    inventory.setItem(13, legendaerItem[ran].setLore("§7Seltenheit: §bLegendär").build());
-                                    Cosmetics.add(player, legendaer[ran]);
-                                }
+
+
                             }, delay[count]);
                         }
                         if (!stopped) {
@@ -374,13 +349,8 @@ public class CrateOpen {
                                 int ran = new Random().nextInt(mystischItem.length);
                                 play3LevelUpFor(player);
                                 setFrame(new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 4).setName("§7Dein Gewinn: " + mystischItem[ran].build().getItemMeta().getDisplayName()).build());
-                                if (Cosmetics.has(player, mystisch[ran])) {
-                                    inventory.setItem(13, mystischItem[ran].setLore("§7Seltenheit: §6Mystisch", "", "§cDu besitzt diesen Gegenstand bereits.", "§cDeswegen wurde der Gegenstand", "§cfür §e51.200 §6Coins §cverkauft.").build());
-                                    HyperiorCore.getCoinSystem().addCoins(player, 51200, false);
-                                } else {
-                                    inventory.setItem(13, mystischItem[ran].setLore("§7Seltenheit: §6Mystisch").build());
-                                    Cosmetics.add(player, mystisch[ran]);
-                                }
+
+
                             }, delay[count]);
                         }
                         if (!stopped) {
@@ -405,13 +375,8 @@ public class CrateOpen {
                                 int ran = new Random().nextInt(schwarzmarktwareItem.length);
                                 play3LevelUpFor(player);
                                 setFrame(new ItemBuilder(Material.STAINED_GLASS_PANE, (short) 14).setName("§7Dein Gewinn: " + schwarzmarktwareItem[ran].build().getItemMeta().getDisplayName()).build());
-                                if (Cosmetics.has(player, schwarzmarktware[ran])) {
-                                    inventory.setItem(13, schwarzmarktwareItem[ran].setLore("§7Seltenheit: §cSchwarzmarktware", "", "§cDu besitzt diesen Gegenstand bereits.", "§cDeswegen wurde der Gegenstand", "§cfür §e204.800 §6Coins §cverkauft.").build());
-                                    HyperiorCore.getCoinSystem().addCoins(player, 204800, false);
-                                } else {
-                                    inventory.setItem(13, schwarzmarktwareItem[ran].setLore("§7Seltenheit: §cSchwarzmarktware").build());
-                                    Cosmetics.add(player, schwarzmarktware[ran]);
-                                }
+
+
                             }, delay[count]);
                         }
                         if (!stopped) {

@@ -1,5 +1,6 @@
 package de.groodian.cosmetics.crate;
 
+import de.groodian.cosmetics.Main;
 import de.groodian.hyperiorcore.main.HyperiorCore;
 import de.groodian.hyperiorcore.util.HSound;
 import de.groodian.hyperiorcore.util.ItemBuilder;

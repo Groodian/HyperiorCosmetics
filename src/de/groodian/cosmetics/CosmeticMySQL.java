@@ -1,7 +1,6 @@
 package de.groodian.cosmetics;
 
 import com.google.gson.JsonObject;
-import de.groodian.cosmetics.main.Main;
 import de.groodian.hyperiorcore.main.HyperiorCore;
 import de.groodian.hyperiorcore.util.MySQL;
 import org.bukkit.Bukkit;
@@ -48,13 +47,13 @@ public class CosmeticMySQL {
     /**
      * This method can be executed sync
      */
-    public static int getActivatedCosmetic(UUID uuid, CosmeticType cosmeticType) {
+    public static int getActivatedCosmetic(UUID uuid, Category category) {
         try {
-            PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("SELECT " + cosmeticType + " FROM cosmetic WHERE UUID = ?");
+            PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("SELECT " + category + " FROM cosmetic WHERE UUID = ?");
             ps.setString(1, uuid.toString().replaceAll("-", ""));
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return rs.getInt(cosmeticType.toString());
+                return rs.getInt(category.toString());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -65,7 +64,7 @@ public class CosmeticMySQL {
     /**
      * This method can be executed sync
      */
-    public static void add(final UUID player, final Cosmetic cosmetic) {
+    public static void add(final Player player, final Cosmetic cosmetic) {
         Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
             int[] cosmeticIds = getCosmeticIds(player.getUniqueId());
 
@@ -110,21 +109,21 @@ public class CosmeticMySQL {
      * This method can be executed sync
      */
     public static void activate(Player player, Cosmetic cosmetic) {
-        setActivatedCosmetic(player, cosmetic.getType(), cosmetic.getId());
+        setActivatedCosmetic(player, cosmetic.getCategory(), cosmetic.getId());
     }
 
     /**
      * This method can be executed sync
      */
-    public static void deactivate(Player player, CosmeticType cosmeticType) {
-        setActivatedCosmetic(player, cosmeticType, -1);
+    public static void deactivate(Player player, Category category) {
+        setActivatedCosmetic(player, category, -1);
     }
 
-    private static void setActivatedCosmetic(final Player player, final CosmeticType cosmeticType, final int cosmeticId) {
+    private static void setActivatedCosmetic(final Player player, final Category category, final int cosmeticId) {
         Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
             if (isUserExists(player)) {
                 try {
-                    PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("UPDATE cosmetic SET " + cosmeticType + " = ?, playername = ? WHERE UUID = ?");
+                    PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("UPDATE cosmetic SET " + category + " = ?, playername = ? WHERE UUID = ?");
                     ps.setInt(1, cosmeticId);
                     ps.setString(2, player.getPlayer().getName());
                     ps.setString(3, player.getPlayer().getUniqueId().toString().replaceAll("-", ""));
@@ -134,7 +133,7 @@ public class CosmeticMySQL {
                 }
             } else {
                 try {
-                    PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("INSERT INTO cosmetic (UUID,playername," + cosmeticType + ") VALUES (?,?,?)");
+                    PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("INSERT INTO cosmetic (UUID,playername," + category + ") VALUES (?,?,?)");
                     ps.setString(1, player.getPlayer().getUniqueId().toString().replaceAll("-", ""));
                     ps.setString(2, player.getPlayer().getName());
                     ps.setInt(3, cosmeticId);

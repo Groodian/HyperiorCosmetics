@@ -1,11 +1,11 @@
 package de.groodian.cosmetics;
 
-public enum CosmeticType {
+public enum Category {
 
     PARTICLE,
     BLOCK,
     HELMET,
-    CHESTPLATE,
+    CHEST_PLATE,
     PANTS,
     SHOES,
     GADGET
