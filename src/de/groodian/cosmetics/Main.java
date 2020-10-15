@@ -21,9 +21,9 @@ public class Main extends JavaPlugin {
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new MainListener(this), this);
 
-        getCommand("test").setExecutor(new TestCommand(this));
+        getCommand("ctest").setExecutor(new TestCommand(this));
 
-        this.cosmeticPlayerManager = new CosmeticPlayerManager();
+        cosmeticPlayerManager = new CosmeticPlayerManager();
 
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§aGeladen!");
     }

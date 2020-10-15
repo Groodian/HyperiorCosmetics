@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -24,7 +25,9 @@ public class CosmeticPlayer {
 
     public void equip(Cosmetic cosmetic) {
         try {
-            CosmeticHandler<?> instance = cosmetic.getClazz().getDeclaredConstructor(CosmeticPlayer.class, Cosmetic.class).newInstance(this, cosmetic);
+            ParameterizedType parameterizedType = (ParameterizedType) cosmetic.getClazz().getGenericSuperclass();
+            Class<?> genericClass = (Class<?>) parameterizedType.getActualTypeArguments()[0];
+            CosmeticHandler<?> instance = cosmetic.getClazz().getDeclaredConstructor(CosmeticPlayer.class, genericClass).newInstance(this, cosmetic);
             instance.onEquip();
             CosmeticMySQL.activate(getPlayer(), cosmetic);
             activeCosmetics.put(cosmetic.getCategory(), instance);
@@ -37,6 +40,7 @@ public class CosmeticPlayer {
         if (activeCosmetics.containsKey(category)) {
             CosmeticHandler<?> cosmeticHandler = activeCosmetics.get(category);
             cosmeticHandler.onDisable();
+            CosmeticMySQL.deactivate(getPlayer(), category);
             activeCosmetics.remove(category);
         }
     }
