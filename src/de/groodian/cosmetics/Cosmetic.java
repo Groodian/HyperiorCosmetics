@@ -1,8 +1,14 @@
 package de.groodian.cosmetics;
 
+import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Cosmetic {
+
+    private static final List<Cosmetic> cosmetics = new ArrayList<>();
 
     protected Class<? extends CosmeticHandler<?>> clazz;
     protected int id;
@@ -20,6 +26,9 @@ public abstract class Cosmetic {
         this.price = price;
         this.rarity = rarity;
         this.inventoryItem = inventoryItem;
+
+        cosmetics.add(this);
+        Bukkit.broadcastMessage("Cosmetics: " + cosmetics.size());
     }
 
     public Class<? extends CosmeticHandler<?>> getClazz() {
@@ -48,6 +57,15 @@ public abstract class Cosmetic {
 
     public ItemStack getInventoryItem() {
         return inventoryItem;
+    }
+
+    public static Cosmetic getCosmeticsById(int id) {
+        for (Cosmetic cosmetic : cosmetics) {
+            if (cosmetic.getId() == id) {
+                return cosmetic;
+            }
+        }
+        return null;
     }
 
 }

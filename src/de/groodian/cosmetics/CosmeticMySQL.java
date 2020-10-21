@@ -17,6 +17,14 @@ import java.util.UUID;
 public class CosmeticMySQL {
 
     private static final MySQL cosmeticMySQL = HyperiorCore.getMySQLManager().getCosmeticMySQL();
+    private static HyperiorCosmetic hyperiorCosmetic;
+
+    /**
+     * This method can be executed sync
+     */
+    public static void init(HyperiorCosmetic hyperiorCosmetic) {
+        CosmeticMySQL.hyperiorCosmetic = hyperiorCosmetic;
+    }
 
     /**
      * This method can be executed sync
@@ -28,7 +36,12 @@ public class CosmeticMySQL {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
 
-                JSONObject jsonObject = (JSONObject) JSONValue.parseWithException(rs.getString("cosmetics"));
+                String cosmeticsString = rs.getString("cosmetics");
+                if(cosmeticsString == null) {
+                    return null;
+                }
+
+                JSONObject jsonObject = (JSONObject) JSONValue.parseWithException(cosmeticsString);
                 JSONArray jsonCosmetics = (JSONArray) JSONValue.parseWithException(jsonObject.get("cosmetics").toString());
 
                 int[] cosmetics = new int[jsonCosmetics.size()];
@@ -65,7 +78,7 @@ public class CosmeticMySQL {
      * This method can be executed sync
      */
     public static void add(final Player player, final Cosmetic cosmetic) {
-        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
+        Bukkit.getScheduler().runTaskAsynchronously(hyperiorCosmetic, () -> {
             int[] cosmeticIds = getCosmeticIds(player.getUniqueId());
 
             JSONArray jsonArray = new JSONArray();
@@ -120,7 +133,7 @@ public class CosmeticMySQL {
     }
 
     private static void setActivatedCosmetic(final Player player, final Category category, final int cosmeticId) {
-        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
+        Bukkit.getScheduler().runTaskAsynchronously(hyperiorCosmetic, () -> {
             if (isUserExists(player)) {
                 try {
                     PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("UPDATE cosmetic SET " + category + " = ?, playername = ? WHERE UUID = ?");

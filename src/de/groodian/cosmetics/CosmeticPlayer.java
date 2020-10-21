@@ -28,9 +28,11 @@ public class CosmeticPlayer {
             ParameterizedType parameterizedType = (ParameterizedType) cosmetic.getClazz().getGenericSuperclass();
             Class<?> genericClass = (Class<?>) parameterizedType.getActualTypeArguments()[0];
             CosmeticHandler<?> instance = cosmetic.getClazz().getDeclaredConstructor(CosmeticPlayer.class, genericClass).newInstance(this, cosmetic);
+            disableCosmetic(cosmetic.getCategory());
             instance.onEquip();
             CosmeticMySQL.activate(getPlayer(), cosmetic);
             activeCosmetics.put(cosmetic.getCategory(), instance);
+            getPlayer().sendMessage(cosmetic.getRarity().getColor() + cosmetic.getName() + "§a aktiviert!");
         } catch (InstantiationException | NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
         }
@@ -42,6 +44,7 @@ public class CosmeticPlayer {
             cosmeticHandler.onDisable();
             CosmeticMySQL.deactivate(getPlayer(), category);
             activeCosmetics.remove(category);
+            getPlayer().sendMessage(cosmeticHandler.getCosmetic().getRarity().getColor() + cosmeticHandler.getCosmetic().getName() + "§c deaktiviert!");
         }
     }
 

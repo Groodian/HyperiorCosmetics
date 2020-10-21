@@ -1,6 +1,6 @@
 package de.groodian.cosmetics.crate;
 
-import de.groodian.cosmetics.Main;
+import de.groodian.cosmetics.HyperiorCosmetic;
 import de.groodian.hyperiorcore.util.HSound;
 import de.groodian.hyperiorcore.util.ItemBuilder;
 import org.bukkit.Bukkit;
@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class CrateOpen {
 
-    private final Main plugin;
+    private final HyperiorCosmetic plugin;
     private final Inventory inventory;
     private boolean isRunning;
     private final int[] delay = {1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 10, 15, 16};
@@ -142,7 +142,7 @@ public class CrateOpen {
     private boolean stopped;
     private int item;
 
-    public CrateOpen(Main plugin, Player player) {
+    public CrateOpen(HyperiorCosmetic plugin, Player player) {
         this.plugin = plugin;
         inventory = Bukkit.createInventory(null, 27, "Öffne Kiste...");
         isRunning = false;

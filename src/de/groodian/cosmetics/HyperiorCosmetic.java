@@ -1,22 +1,22 @@
 package de.groodian.cosmetics;
 
+import de.groodian.cosmetics.menu.MainMenu;
 import de.groodian.cosmetics.test.TestCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Main extends JavaPlugin {
+public class HyperiorCosmetic extends JavaPlugin {
 
     public static final String PREFIX = "§aCosmetics §7» ";
 
-    private static Main instance;
-
     private CosmeticPlayerManager cosmeticPlayerManager;
+    private MainMenu mainMenu;
 
     public void onEnable() {
-        instance = this;
-
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§aDas Plugin wird geladen...");
+
+        CosmeticMySQL.init(this);
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new MainListener(this), this);
@@ -24,6 +24,7 @@ public class Main extends JavaPlugin {
         getCommand("ctest").setExecutor(new TestCommand(this));
 
         cosmeticPlayerManager = new CosmeticPlayerManager();
+        mainMenu = new MainMenu(this);
 
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§aGeladen!");
     }
@@ -34,12 +35,12 @@ public class Main extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§cGestoppt!");
     }
 
-    public static Main getInstance() {
-        return instance;
-    }
-
     public CosmeticPlayerManager getCosmeticPlayerManager() {
         return cosmeticPlayerManager;
+    }
+
+    public MainMenu getMainMenu() {
+        return mainMenu;
     }
 
 }

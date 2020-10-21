@@ -1,7 +1,7 @@
 name: HyperiorCosmetics_by_Groodian
 version: 4.0
 author: Groodian
-main: de.groodian.cosmetics.Main
+main: de.groodian.cosmetics.HyperiorCosmetic
 
 depend: [ HyperiorCore_by_Groodian ]
 

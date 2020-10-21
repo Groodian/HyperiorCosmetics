@@ -1,11 +1,11 @@
-package de.groodian.cosmetics.armor;
+package de.groodian.cosmetics.suit;
 
 import de.groodian.cosmetics.CosmeticHandler;
 import de.groodian.cosmetics.CosmeticPlayer;
 
-public class ClassicArmorHandler extends CosmeticHandler<ClassicArmorCosmetic> {
+public class ClassicSuitHandler extends CosmeticHandler<ClassicSuitCosmetic> {
 
-    public ClassicArmorHandler(CosmeticPlayer cosmeticPlayer, ClassicArmorCosmetic cosmetic) {
+    public ClassicSuitHandler(CosmeticPlayer cosmeticPlayer, ClassicSuitCosmetic cosmetic) {
         super(cosmeticPlayer, cosmetic);
     }
 

@@ -7,9 +7,9 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class MainListener implements Listener {
 
-    private Main plugin;
+    private HyperiorCosmetic plugin;
 
-    public MainListener(Main plugin) {
+    public MainListener(HyperiorCosmetic plugin) {
         this.plugin = plugin;
     }
 

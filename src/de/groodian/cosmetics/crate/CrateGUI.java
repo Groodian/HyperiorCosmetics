@@ -1,6 +1,6 @@
 package de.groodian.cosmetics.crate;
 
-import de.groodian.cosmetics.Main;
+import de.groodian.cosmetics.HyperiorCosmetic;
 import de.groodian.hyperiorcore.main.HyperiorCore;
 import de.groodian.hyperiorcore.util.HSound;
 import de.groodian.hyperiorcore.util.ItemBuilder;
@@ -18,10 +18,10 @@ public class CrateGUI implements Listener {
 
     private final String GUI_NAME_SHOP = "Kisten Shop";
 
-    private Main plugin;
+    private HyperiorCosmetic plugin;
     private int price = 1000;
 
-    public CrateGUI(Main plugin) {
+    public CrateGUI(HyperiorCosmetic plugin) {
         this.plugin = plugin;
     }
 
@@ -89,7 +89,7 @@ public class CrateGUI implements Listener {
                                     new CrateOpen(plugin, player);
                                 } else {
                                     player.closeInventory();
-                                    player.sendMessage(Main.PREFIX + "§cDir fehlen noch §e" + (price - coins) + " §6Coins §cum diese Kiste zu öffnen.");
+                                    player.sendMessage(HyperiorCosmetic.PREFIX + "§cDir fehlen noch §e" + (price - coins) + " §6Coins §cum diese Kiste zu öffnen.");
                                 }
                                 return;
                             }
