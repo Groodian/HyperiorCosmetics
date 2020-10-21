@@ -48,6 +48,12 @@ public class CosmeticPlayer {
         }
     }
 
+    public void disableAll() {
+        for (Category category : Category.values()) {
+            disableCosmetic(category);
+        }
+    }
+
     public UUID getUuid() {
         return uuid;
     }

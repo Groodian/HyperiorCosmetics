@@ -7,8 +7,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class Menu implements Listener {
 
@@ -16,21 +20,41 @@ public abstract class Menu implements Listener {
     protected String title;
     protected int size;
 
+    private Map<Inventory, Map<ItemStack, MenuRunnable>> menuRunnableMap;
+
     public Menu(HyperiorCosmetic hyperiorCosmetic, String title, int size) {
         this.hyperiorCosmetic = hyperiorCosmetic;
         this.title = title;
         this.size = size;
 
+        menuRunnableMap = new HashMap<>();
         hyperiorCosmetic.getServer().getPluginManager().registerEvents(this, hyperiorCosmetic);
     }
 
     public void open(CosmeticPlayer cosmeticPlayer) {
+        open(cosmeticPlayer, 1);
+    }
+
+    public void open(CosmeticPlayer cosmeticPlayer, int page) {
         Inventory inventory = Bukkit.createInventory(null, size, title);
-        putItems(cosmeticPlayer, inventory);
+        putItems(cosmeticPlayer, inventory, page);
         cosmeticPlayer.getPlayer().openInventory(inventory);
     }
 
-    protected abstract void putItems(CosmeticPlayer cosmeticPlayer, Inventory inventory);
+    protected abstract void putItems(CosmeticPlayer cosmeticPlayer, Inventory inventory, int page);
+
+    protected void putItem(Inventory inventory, ItemStack itemStack, int slot, MenuRunnable menuRunnable) {
+        if (menuRunnableMap.containsKey(inventory)) {
+            Map<ItemStack, MenuRunnable> map = menuRunnableMap.get(inventory);
+            map.put(itemStack, menuRunnable);
+        } else {
+            Bukkit.getConsoleSender().sendMessage("Created Inventory");
+            Map<ItemStack, MenuRunnable> map = new HashMap<>();
+            map.put(itemStack, menuRunnable);
+            menuRunnableMap.put(inventory, map);
+        }
+        inventory.setItem(slot, itemStack);
+    }
 
     @EventHandler
     public void handleInventoryClick(InventoryClickEvent e) {
@@ -57,11 +81,27 @@ public abstract class Menu implements Listener {
         if (e.getCurrentItem().getItemMeta().getDisplayName() == null)
             return;
 
+        if (!menuRunnableMap.containsKey(e.getInventory()))
+            return;
+
+        if (!menuRunnableMap.get(e.getInventory()).containsKey(e.getCurrentItem()))
+            return;
+
+        if(menuRunnableMap.get(e.getInventory()).get(e.getCurrentItem()) == null)
+            return;
+
         CosmeticPlayer cosmeticPlayer = hyperiorCosmetic.getCosmeticPlayerManager().getCosmeticPlayer(player);
-        handleClick(new ClickData(cosmeticPlayer, e.getInventory(), e.getAction(), e.getCurrentItem(), e.getSlot()));
+        ClickData clickData = new ClickData(cosmeticPlayer, e.getInventory(), e.getAction(), e.getCurrentItem(), e.getSlot());
+        menuRunnableMap.get(e.getInventory()).get(e.getCurrentItem()).run(clickData);
     }
 
-    public abstract void handleClick(ClickData clickData);
+    @EventHandler
+    public void handleInventoryClose(InventoryCloseEvent e) {
+        if(menuRunnableMap.containsKey(e.getInventory())) {
+            menuRunnableMap.remove(e.getInventory());
+            Bukkit.getConsoleSender().sendMessage("Removed Inventory");
+        }
+    }
 
     protected boolean compareItemNames(ItemStack itemStack0, ItemStack itemStack1) {
         return itemStack0.getItemMeta().getDisplayName().equals(itemStack1.getItemMeta().getDisplayName());

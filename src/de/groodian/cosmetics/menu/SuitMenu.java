@@ -1,11 +1,9 @@
 package de.groodian.cosmetics.menu;
 
-import de.groodian.cosmetics.Cosmetic;
+import de.groodian.cosmetics.Category;
 import de.groodian.cosmetics.CosmeticPlayer;
 import de.groodian.cosmetics.HyperiorCosmetic;
-import de.groodian.cosmetics.suit.Suit;
 import de.groodian.cosmetics.suit.SuitCollection;
-import org.bukkit.ChatColor;
 import org.bukkit.inventory.Inventory;
 
 public class SuitMenu extends CosmeticMenu {
@@ -13,35 +11,21 @@ public class SuitMenu extends CosmeticMenu {
     private SuitCollection suitCollection;
 
     public SuitMenu(HyperiorCosmetic hyperiorCosmetic, SuitCollection suitCollection) {
-        super(hyperiorCosmetic, "Cosmetic > Anzüge");
+        super(hyperiorCosmetic, "Anzüge", Category.HELMET, Category.CHEST_PLATE, Category.PANTS, Category.SHOES);
         this.suitCollection = suitCollection;
     }
 
     @Override
-    protected void setCosmetics(CosmeticPlayer cosmeticPlayer, Inventory inventory) {
-        int count = 0;
-        for (Suit suit : suitCollection.values()) {
-            if (count < 9) {
-                inventory.setItem(count, getEditedItem(suit.getHelmetSlot()));
-                inventory.setItem(count + 9, getEditedItem(suit.getChestPlateSlot()));
-                inventory.setItem(count + 18, getEditedItem(suit.getPantsSlot()));
-                inventory.setItem(count + 27, getEditedItem(suit.getShoesSlot()));
-                count++;
-            } else {
+    protected void setCosmetics(CosmeticPlayer cosmeticPlayer, Inventory inventory, int page) {
+        for (int i = (page - 1) * 9; i < page * 9; i++) {
+            if (i >= suitCollection.values().size()) {
                 break;
             }
-        }
-    }
-
-    @Override
-    public void handleCosmeticClick(ClickData clickData) {
-        for (Suit suit : suitCollection.values()) {
-            for (Cosmetic cosmetic : suit.getAsList()) {
-                if (cosmetic.getName().equals(ChatColor.stripColor(clickData.getItemStack().getItemMeta().getDisplayName()))) {
-                    clickData.getCosmeticPlayer().equip(cosmetic);
-                    break;
-                }
-            }
+            final int finalI = i;
+            putItem(inventory, getEditedItem(suitCollection.values().get(i).getHelmetSlot()), i - ((page - 1) * 27), clickData -> cosmeticPlayer.equip(suitCollection.values().get(finalI).getHelmetSlot()));
+            putItem(inventory, getEditedItem(suitCollection.values().get(i).getChestPlateSlot()), i - ((page - 1) * 27) + 9, clickData -> cosmeticPlayer.equip(suitCollection.values().get(finalI).getChestPlateSlot()));
+            putItem(inventory, getEditedItem(suitCollection.values().get(i).getPantsSlot()), i - ((page - 1) * 27) + 18, clickData -> cosmeticPlayer.equip(suitCollection.values().get(finalI).getPantsSlot()));
+            putItem(inventory, getEditedItem(suitCollection.values().get(i).getShoesSlot()), i - ((page - 1) * 27) + 27, clickData -> cosmeticPlayer.equip(suitCollection.values().get(finalI).getShoesSlot()));
         }
     }
 

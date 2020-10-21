@@ -97,6 +97,120 @@ public class SuitCollection {
                                 new ItemStack(Material.CHAINMAIL_BOOTS),
                                 new ItemStack(Material.CHAINMAIL_BOOTS)
                         )
+                ),
+                new Suit(
+                        new ClassicSuitCosmetic(
+                                9,
+                                "Eisenhelm",
+                                Category.HELMET,
+                                1000,
+                                Rarity.COMMON,
+                                new ItemStack(Material.IRON_HELMET),
+                                new ItemStack(Material.IRON_HELMET)
+                        ),
+                        new ClassicSuitCosmetic(
+                                10,
+                                "Eisenbrustplatte",
+                                Category.CHEST_PLATE,
+                                1000,
+                                Rarity.COMMON,
+                                new ItemStack(Material.IRON_CHESTPLATE),
+                                new ItemStack(Material.IRON_CHESTPLATE)
+                        ),
+                        new ClassicSuitCosmetic(
+                                11,
+                                "Eisenhose",
+                                Category.PANTS,
+                                1000,
+                                Rarity.COMMON,
+                                new ItemStack(Material.IRON_LEGGINGS),
+                                new ItemStack(Material.IRON_LEGGINGS)
+                        ),
+                        new ClassicSuitCosmetic(
+                                12,
+                                "Eisenschuhe",
+                                Category.SHOES,
+                                1000,
+                                Rarity.COMMON,
+                                new ItemStack(Material.IRON_BOOTS),
+                                new ItemStack(Material.IRON_BOOTS)
+                        )
+                ),
+                new Suit(
+                        new ClassicSuitCosmetic(
+                                13,
+                                "Goldhelm",
+                                Category.HELMET,
+                                2000,
+                                Rarity.UNCOMMON,
+                                new ItemStack(Material.GOLD_HELMET),
+                                new ItemStack(Material.GOLD_HELMET)
+                        ),
+                        new ClassicSuitCosmetic(
+                                14,
+                                "Goldbrustplatte",
+                                Category.CHEST_PLATE,
+                                2000,
+                                Rarity.UNCOMMON,
+                                new ItemStack(Material.GOLD_CHESTPLATE),
+                                new ItemStack(Material.GOLD_CHESTPLATE)
+                        ),
+                        new ClassicSuitCosmetic(
+                                15,
+                                "Goldhose",
+                                Category.PANTS,
+                                2000,
+                                Rarity.UNCOMMON,
+                                new ItemStack(Material.GOLD_LEGGINGS),
+                                new ItemStack(Material.GOLD_LEGGINGS)
+                        ),
+                        new ClassicSuitCosmetic(
+                                16,
+                                "Goldschuhe",
+                                Category.SHOES,
+                                2000,
+                                Rarity.UNCOMMON,
+                                new ItemStack(Material.GOLD_BOOTS),
+                                new ItemStack(Material.GOLD_BOOTS)
+                        )
+                ),
+                new Suit(
+                        new ClassicSuitCosmetic(
+                                17,
+                                "Diamanthelm",
+                                Category.HELMET,
+                                2000,
+                                Rarity.UNCOMMON,
+                                new ItemStack(Material.DIAMOND_HELMET),
+                                new ItemStack(Material.DIAMOND_HELMET)
+                        ),
+                        new ClassicSuitCosmetic(
+                                18,
+                                "Diamantbrustplatte",
+                                Category.CHEST_PLATE,
+                                2000,
+                                Rarity.UNCOMMON,
+                                new ItemStack(Material.DIAMOND_CHESTPLATE),
+                                new ItemStack(Material.DIAMOND_CHESTPLATE)
+                        ),
+                        new ClassicSuitCosmetic(
+                                19,
+                                "Diamanthose",
+                                Category.PANTS,
+                                2000,
+                                Rarity.UNCOMMON,
+                                new ItemStack(Material.DIAMOND_LEGGINGS),
+                                new ItemStack(Material.DIAMOND_LEGGINGS)
+                        ),
+                        new ClassicSuitCosmetic(
+                                20,
+                                "Diamantschuhe",
+                                Category.SHOES,
+                                2000,
+                                Rarity.UNCOMMON,
+                                new ItemStack(Material.DIAMOND_BOOTS),
+                                new ItemStack(Material.DIAMOND_BOOTS)
+                        )
                 )
         );
     }

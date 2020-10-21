@@ -11,29 +11,18 @@ public class DefaultCosmeticMenu extends CosmeticMenu {
     private CosmeticCollection<? extends Cosmetic> cosmeticCollection;
 
     public DefaultCosmeticMenu(HyperiorCosmetic hyperiorCosmetic, CosmeticCollection<? extends Cosmetic> cosmeticCollection) {
-        super(hyperiorCosmetic, "Cosmetic > " + cosmeticCollection.getName());
+        super(hyperiorCosmetic, cosmeticCollection.getName(), cosmeticCollection.getCategory());
+        this.cosmeticCollection = cosmeticCollection;
     }
 
     @Override
-    protected void setCosmetics(CosmeticPlayer cosmeticPlayer, Inventory inventory) {
-        int count = 0;
-        for (Cosmetic cosmetic : cosmeticCollection.values()) {
-            if (count < 27) {
-                inventory.setItem(count, getEditedItem(cosmetic));
-                count++;
-            } else {
+    protected void setCosmetics(CosmeticPlayer cosmeticPlayer, Inventory inventory, int page) {
+        for (int i = (page - 1) * 27; i < page * 27; i++) {
+            if (i >= cosmeticCollection.values().size()) {
                 break;
             }
-        }
-    }
-
-    @Override
-    public void handleCosmeticClick(ClickData clickData) {
-        for (Cosmetic cosmetic : cosmeticCollection.values()) {
-            if (cosmetic.getInventoryItem().getItemMeta().getDisplayName().equals(clickData.getItemStack().getItemMeta().getDisplayName())) {
-                clickData.getCosmeticPlayer().equip(cosmetic);
-                break;
-            }
+            final int finalI = i;
+            putItem(inventory, getEditedItem(cosmeticCollection.values().get(i)), i - ((page - 1) * 27), clickData -> cosmeticPlayer.equip(cosmeticCollection.values().get(finalI)));
         }
     }
 

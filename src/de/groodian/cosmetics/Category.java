@@ -2,12 +2,22 @@ package de.groodian.cosmetics;
 
 public enum Category {
 
-    PARTICLE,
-    BLOCK,
-    HELMET,
-    CHEST_PLATE,
-    PANTS,
-    SHOES,
-    GADGET
+    PARTICLE("Partikel"),
+    BLOCK("Blockspur"),
+    HELMET("Helm"),
+    CHEST_PLATE("Brustplatte"),
+    PANTS("Hose"),
+    SHOES("Schuhe"),
+    GADGET("Gadget");
+
+    private String name;
+
+    Category(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
 }

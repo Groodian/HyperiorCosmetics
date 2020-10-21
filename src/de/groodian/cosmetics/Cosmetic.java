@@ -28,7 +28,7 @@ public abstract class Cosmetic {
         this.inventoryItem = inventoryItem;
 
         cosmetics.add(this);
-        Bukkit.broadcastMessage("Cosmetics: " + cosmetics.size());
+        Bukkit.getConsoleSender().sendMessage("Cosmetics: " + cosmetics.size());
     }
 
     public Class<? extends CosmeticHandler<?>> getClazz() {
