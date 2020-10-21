@@ -37,7 +37,7 @@ public class CosmeticMySQL {
             if (rs.next()) {
 
                 String cosmeticsString = rs.getString("cosmetics");
-                if(cosmeticsString == null) {
+                if (cosmeticsString == null) {
                     return null;
                 }
 

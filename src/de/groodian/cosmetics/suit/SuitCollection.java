@@ -12,10 +12,11 @@ public class SuitCollection {
 
     private List<Suit> suits;
 
+    public SuitCollection() {
+        suits = registerSuits();
+    }
+
     public List<Suit> values() {
-        if (suits == null) {
-            suits = registerSuits();
-        }
         return suits;
     }
 

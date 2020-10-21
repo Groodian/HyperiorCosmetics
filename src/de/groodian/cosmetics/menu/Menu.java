@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 public abstract class Menu implements Listener {
 
@@ -61,5 +62,9 @@ public abstract class Menu implements Listener {
     }
 
     public abstract void handleClick(ClickData clickData);
+
+    protected boolean compareItemNames(ItemStack itemStack0, ItemStack itemStack1) {
+        return itemStack0.getItemMeta().getDisplayName().equals(itemStack1.getItemMeta().getDisplayName());
+    }
 
 }

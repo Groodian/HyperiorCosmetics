@@ -15,13 +15,13 @@ public class MainMenu extends Menu {
     private List<MenuCategory> menuCategories;
 
     public MainMenu(HyperiorCosmetic hyperiorCosmetic) {
-        super(hyperiorCosmetic, "Cosmetic", 45);
+        super(hyperiorCosmetic, "Cosmetic", 18);
 
         menuCategories = Arrays.asList(
-                new MenuCategory(new ItemBuilder(Material.REDSTONE).setName("Partikel").build(), 10, new CosmeticMenu(hyperiorCosmetic, new PlaceHolder())),
-                new MenuCategory(new ItemBuilder(Material.GOLD_BLOCK).setName("Blockspuren").build(), 11, new CosmeticMenu(hyperiorCosmetic, new PlaceHolder())),
+                new MenuCategory(new ItemBuilder(Material.REDSTONE).setName("Partikel").build(), 10, new DefaultCosmeticMenu(hyperiorCosmetic, new PlaceHolder())),
+                new MenuCategory(new ItemBuilder(Material.GOLD_BLOCK).setName("Blockspuren").build(), 11, new DefaultCosmeticMenu(hyperiorCosmetic, new PlaceHolder())),
                 new MenuCategory(new ItemBuilder(Material.DIAMOND_CHESTPLATE).setName("Anzüge").build(), 12, new SuitMenu(hyperiorCosmetic, new SuitCollection())),
-                new MenuCategory(new ItemBuilder(Material.REDSTONE_COMPARATOR).setName("Gadgets").build(), 13, new CosmeticMenu(hyperiorCosmetic, new PlaceHolder()))
+                new MenuCategory(new ItemBuilder(Material.REDSTONE_COMPARATOR).setName("Gadgets").build(), 13, new DefaultCosmeticMenu(hyperiorCosmetic, new PlaceHolder()))
         );
 
     }
