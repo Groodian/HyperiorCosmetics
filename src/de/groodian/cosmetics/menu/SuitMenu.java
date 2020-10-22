@@ -21,11 +21,10 @@ public class SuitMenu extends CosmeticMenu {
             if (i >= suitCollection.values().size()) {
                 break;
             }
-            final int finalI = i;
-            putItem(inventory, getEditedItem(suitCollection.values().get(i).getHelmetSlot()), i - ((page - 1) * 27), clickData -> cosmeticPlayer.equip(suitCollection.values().get(finalI).getHelmetSlot()));
-            putItem(inventory, getEditedItem(suitCollection.values().get(i).getChestPlateSlot()), i - ((page - 1) * 27) + 9, clickData -> cosmeticPlayer.equip(suitCollection.values().get(finalI).getChestPlateSlot()));
-            putItem(inventory, getEditedItem(suitCollection.values().get(i).getPantsSlot()), i - ((page - 1) * 27) + 18, clickData -> cosmeticPlayer.equip(suitCollection.values().get(finalI).getPantsSlot()));
-            putItem(inventory, getEditedItem(suitCollection.values().get(i).getShoesSlot()), i - ((page - 1) * 27) + 27, clickData -> cosmeticPlayer.equip(suitCollection.values().get(finalI).getShoesSlot()));
+            putCosmetic(cosmeticPlayer, inventory, suitCollection.values().get(i).getHelmetSlot(), i - ((page - 1) * 27), page);
+            putCosmetic(cosmeticPlayer, inventory, suitCollection.values().get(i).getChestPlateSlot(), i - ((page - 1) * 27) + 9, page);
+            putCosmetic(cosmeticPlayer, inventory, suitCollection.values().get(i).getPantsSlot(), i - ((page - 1) * 27) + 18, page);
+            putCosmetic(cosmeticPlayer, inventory, suitCollection.values().get(i).getShoesSlot(), i - ((page - 1) * 27) + 27, page);
         }
     }
 

@@ -3,6 +3,7 @@ package de.groodian.cosmetics;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class MainListener implements Listener {
@@ -15,8 +16,14 @@ public class MainListener implements Listener {
 
     @EventHandler
     public void onAsyncPlayerJoin(AsyncPlayerPreLoginEvent e) {
-        CosmeticPlayer cosmeticPlayer = new CosmeticPlayer(e.getUniqueId(), CosmeticMySQL.getCosmeticIds(e.getUniqueId()));
+        CosmeticPlayer cosmeticPlayer = new CosmeticPlayer(e.getUniqueId());
         plugin.getCosmeticPlayerManager().registerPlayer(cosmeticPlayer);
+    }
+
+    @EventHandler
+    public void handlePlayerJoin(PlayerJoinEvent e) {
+        CosmeticPlayer cosmeticPlayer = plugin.getCosmeticPlayerManager().getCosmeticPlayer(e.getPlayer());
+        cosmeticPlayer.activateCosmeticsToActivate();
     }
 
     @EventHandler

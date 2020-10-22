@@ -48,7 +48,7 @@ public abstract class Menu implements Listener {
             Map<ItemStack, MenuRunnable> map = menuRunnableMap.get(inventory);
             map.put(itemStack, menuRunnable);
         } else {
-            Bukkit.getConsoleSender().sendMessage("Created Inventory");
+            Bukkit.broadcastMessage("Created Inventory");
             Map<ItemStack, MenuRunnable> map = new HashMap<>();
             map.put(itemStack, menuRunnable);
             menuRunnableMap.put(inventory, map);
@@ -87,7 +87,7 @@ public abstract class Menu implements Listener {
         if (!menuRunnableMap.get(e.getInventory()).containsKey(e.getCurrentItem()))
             return;
 
-        if(menuRunnableMap.get(e.getInventory()).get(e.getCurrentItem()) == null)
+        if (menuRunnableMap.get(e.getInventory()).get(e.getCurrentItem()) == null)
             return;
 
         CosmeticPlayer cosmeticPlayer = hyperiorCosmetic.getCosmeticPlayerManager().getCosmeticPlayer(player);
@@ -97,9 +97,9 @@ public abstract class Menu implements Listener {
 
     @EventHandler
     public void handleInventoryClose(InventoryCloseEvent e) {
-        if(menuRunnableMap.containsKey(e.getInventory())) {
+        if (menuRunnableMap.containsKey(e.getInventory())) {
             menuRunnableMap.remove(e.getInventory());
-            Bukkit.getConsoleSender().sendMessage("Removed Inventory");
+            Bukkit.broadcastMessage("Removed Inventory");
         }
     }
 

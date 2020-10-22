@@ -21,8 +21,7 @@ public class DefaultCosmeticMenu extends CosmeticMenu {
             if (i >= cosmeticCollection.values().size()) {
                 break;
             }
-            final int finalI = i;
-            putItem(inventory, getEditedItem(cosmeticCollection.values().get(i)), i - ((page - 1) * 27), clickData -> cosmeticPlayer.equip(cosmeticCollection.values().get(finalI)));
+            putCosmetic(cosmeticPlayer, inventory, cosmeticCollection.values().get(i), i - ((page - 1) * 27), page);
         }
     }
 

@@ -27,7 +27,7 @@ public class CosmeticMySQL {
     }
 
     /**
-     * This method can be executed sync
+     * This method should be executed async
      */
     public static int[] getCosmeticIds(UUID uuid) {
         try {
@@ -46,7 +46,7 @@ public class CosmeticMySQL {
 
                 int[] cosmetics = new int[jsonCosmetics.size()];
                 for (int i = 0; i < jsonCosmetics.size(); i++) {
-                    cosmetics[i] = (int) jsonCosmetics.get(i);
+                    cosmetics[i] = Integer.parseInt(jsonCosmetics.get(i).toString());
                 }
 
                 return cosmetics;
@@ -58,9 +58,9 @@ public class CosmeticMySQL {
     }
 
     /**
-     * This method can be executed sync
+     * This method should be executed async
      */
-    public static int getActivatedCosmetic(UUID uuid, Category category) {
+    public static int getActivatedCosmeticId(UUID uuid, Category category) {
         try {
             PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("SELECT " + category + " FROM cosmetic WHERE UUID = ?");
             ps.setString(1, uuid.toString().replaceAll("-", ""));
