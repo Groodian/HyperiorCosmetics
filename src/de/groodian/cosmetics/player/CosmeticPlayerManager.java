@@ -1,6 +1,5 @@
 package de.groodian.cosmetics.player;
 
-import de.groodian.cosmetics.player.CosmeticPlayer;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;

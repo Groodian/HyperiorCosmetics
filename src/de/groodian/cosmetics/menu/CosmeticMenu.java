@@ -1,9 +1,9 @@
 package de.groodian.cosmetics.menu;
 
+import de.groodian.cosmetics.HyperiorCosmetic;
 import de.groodian.cosmetics.cosmetic.Category;
 import de.groodian.cosmetics.cosmetic.Cosmetic;
 import de.groodian.cosmetics.player.CosmeticPlayer;
-import de.groodian.cosmetics.HyperiorCosmetic;
 import de.groodian.hyperiorcore.main.HyperiorCore;
 import de.groodian.hyperiorcore.util.HSound;
 import de.groodian.hyperiorcore.util.ItemBuilder;

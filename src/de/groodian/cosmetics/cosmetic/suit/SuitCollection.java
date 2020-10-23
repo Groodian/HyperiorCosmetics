@@ -162,6 +162,40 @@ public class SuitCollection {
                 new Suit(
                         new ClassicSuitCosmetic(
                                 17,
+                                "Grüner Helm",
+                                Category.HELMET,
+                                Rarity.COMMON,
+                                new ItemBuilder(Material.LEATHER_HELMET).setColorAndBuild(0, 255, 0),
+                                new ItemBuilder(Material.LEATHER_HELMET).setColorAndBuild(0, 255, 0)
+                        ),
+                        new ClassicSuitCosmetic(
+                                18,
+                                "Grüne Brustplatte",
+                                Category.CHEST_PLATE,
+                                Rarity.COMMON,
+                                new ItemBuilder(Material.LEATHER_CHESTPLATE).setColorAndBuild(0, 255, 0),
+                                new ItemBuilder(Material.LEATHER_CHESTPLATE).setColorAndBuild(0, 255, 0)
+                        ),
+                        new ClassicSuitCosmetic(
+                                19,
+                                "Grüne Hose",
+                                Category.PANTS,
+                                Rarity.COMMON,
+                                new ItemBuilder(Material.LEATHER_LEGGINGS).setColorAndBuild(0, 255, 0),
+                                new ItemBuilder(Material.LEATHER_LEGGINGS).setColorAndBuild(0, 255, 0)
+                        ),
+                        new ClassicSuitCosmetic(
+                                20,
+                                "Grüne Schuhe",
+                                Category.SHOES,
+                                Rarity.COMMON,
+                                new ItemBuilder(Material.LEATHER_BOOTS).setColorAndBuild(0, 255, 0),
+                                new ItemBuilder(Material.LEATHER_BOOTS).setColorAndBuild(0, 255, 0)
+                        )
+                ),
+                new Suit(
+                        new ClassicSuitCosmetic(
+                                21,
                                 "Goldhelm",
                                 Category.HELMET,
                                 Rarity.UNCOMMON,
@@ -169,7 +203,7 @@ public class SuitCollection {
                                 new ItemStack(Material.GOLD_HELMET)
                         ),
                         new ClassicSuitCosmetic(
-                                18,
+                                22,
                                 "Goldbrustplatte",
                                 Category.CHEST_PLATE,
                                 Rarity.UNCOMMON,
@@ -177,7 +211,7 @@ public class SuitCollection {
                                 new ItemStack(Material.GOLD_CHESTPLATE)
                         ),
                         new ClassicSuitCosmetic(
-                                19,
+                                23,
                                 "Goldhose",
                                 Category.PANTS,
                                 Rarity.UNCOMMON,
@@ -185,7 +219,7 @@ public class SuitCollection {
                                 new ItemStack(Material.GOLD_LEGGINGS)
                         ),
                         new ClassicSuitCosmetic(
-                                20,
+                                24,
                                 "Goldschuhe",
                                 Category.SHOES,
                                 Rarity.UNCOMMON,
@@ -195,7 +229,7 @@ public class SuitCollection {
                 ),
                 new Suit(
                         new ClassicSuitCosmetic(
-                                21,
+                                25,
                                 "Diamanthelm",
                                 Category.HELMET,
                                 Rarity.UNCOMMON,
@@ -203,7 +237,7 @@ public class SuitCollection {
                                 new ItemStack(Material.DIAMOND_HELMET)
                         ),
                         new ClassicSuitCosmetic(
-                                22,
+                                26,
                                 "Diamantbrustplatte",
                                 Category.CHEST_PLATE,
                                 Rarity.UNCOMMON,
@@ -211,7 +245,7 @@ public class SuitCollection {
                                 new ItemStack(Material.DIAMOND_CHESTPLATE)
                         ),
                         new ClassicSuitCosmetic(
-                                23,
+                                27,
                                 "Diamanthose",
                                 Category.PANTS,
                                 Rarity.UNCOMMON,
@@ -219,7 +253,7 @@ public class SuitCollection {
                                 new ItemStack(Material.DIAMOND_LEGGINGS)
                         ),
                         new ClassicSuitCosmetic(
-                                24,
+                                28,
                                 "Diamantschuhe",
                                 Category.SHOES,
                                 Rarity.UNCOMMON,
@@ -229,7 +263,7 @@ public class SuitCollection {
                 ),
                 new Suit(
                         new ClassicSuitCosmetic(
-                                25,
+                                29,
                                 "Astronaut Helm",
                                 Category.HELMET,
                                 Rarity.UNCOMMON,
@@ -237,7 +271,7 @@ public class SuitCollection {
                                 new ItemBuilder(Material.STAINED_GLASS, (short) 7).build()
                         ),
                         new ClassicSuitCosmetic(
-                                26,
+                                30,
                                 "Astronaut Brustplatte",
                                 Category.CHEST_PLATE,
                                 Rarity.UNCOMMON,
@@ -245,7 +279,7 @@ public class SuitCollection {
                                 new ItemBuilder(Material.LEATHER_CHESTPLATE).setColorAndBuild(255, 255, 255)
                         ),
                         new ClassicSuitCosmetic(
-                                27,
+                                31,
                                 "Astronaut Hose",
                                 Category.PANTS,
                                 Rarity.UNCOMMON,
@@ -253,7 +287,7 @@ public class SuitCollection {
                                 new ItemBuilder(Material.LEATHER_LEGGINGS).setColorAndBuild(255, 255, 255)
                         ),
                         new ClassicSuitCosmetic(
-                                28,
+                                32,
                                 "Astronaut Schuhe",
                                 Category.SHOES,
                                 Rarity.UNCOMMON,
@@ -264,35 +298,69 @@ public class SuitCollection {
                 new Suit(
                         new AdvancedSuitCosmetic(
                                 DiscoSuitHandler.class,
-                                29,
+                                33,
                                 "Disco Helm",
                                 Category.HELMET,
-                                Rarity.LEGENDARY,
+                                Rarity.EPIC,
                                 new ItemBuilder(Material.LEATHER_HELMET).setColorAndBuild(148, 0, 211)
                         ),
                         new AdvancedSuitCosmetic(
                                 DiscoSuitHandler.class,
-                                30,
+                                34,
                                 "Disco Brustplatte",
                                 Category.CHEST_PLATE,
-                                Rarity.LEGENDARY,
+                                Rarity.EPIC,
                                 new ItemBuilder(Material.LEATHER_CHESTPLATE).setColorAndBuild(148, 0, 211)
                         ),
                         new AdvancedSuitCosmetic(
                                 DiscoSuitHandler.class,
-                                31,
+                                35,
                                 "Disco Hose",
                                 Category.PANTS,
-                                Rarity.LEGENDARY,
+                                Rarity.EPIC,
                                 new ItemBuilder(Material.LEATHER_LEGGINGS).setColorAndBuild(148, 0, 211)
                         ),
                         new AdvancedSuitCosmetic(
                                 DiscoSuitHandler.class,
-                                32,
+                                36,
                                 "Disco Schuhe",
                                 Category.SHOES,
-                                Rarity.LEGENDARY,
+                                Rarity.EPIC,
                                 new ItemBuilder(Material.LEATHER_BOOTS).setColorAndBuild(148, 0, 211)
+                        )
+                ),
+                new Suit(
+                        new AdvancedSuitCosmetic(
+                                RainbowSuitHandler.class,
+                                37,
+                                "Rainbow Helm",
+                                Category.HELMET,
+                                Rarity.LEGENDARY,
+                                new ItemBuilder(Material.LEATHER_HELMET).setColorAndBuild(52, 171, 235)
+                        ),
+                        new AdvancedSuitCosmetic(
+                                RainbowSuitHandler.class,
+                                28,
+                                "Rainbow Brustplatte",
+                                Category.CHEST_PLATE,
+                                Rarity.LEGENDARY,
+                                new ItemBuilder(Material.LEATHER_CHESTPLATE).setColorAndBuild(52, 171, 235)
+                        ),
+                        new AdvancedSuitCosmetic(
+                                RainbowSuitHandler.class,
+                                39,
+                                "Rainbow Hose",
+                                Category.PANTS,
+                                Rarity.LEGENDARY,
+                                new ItemBuilder(Material.LEATHER_LEGGINGS).setColorAndBuild(52, 171, 235)
+                        ),
+                        new AdvancedSuitCosmetic(
+                                RainbowSuitHandler.class,
+                                40,
+                                "Rainbow Schuhe",
+                                Category.SHOES,
+                                Rarity.LEGENDARY,
+                                new ItemBuilder(Material.LEATHER_BOOTS).setColorAndBuild(52, 171, 235)
                         )
                 )
         );

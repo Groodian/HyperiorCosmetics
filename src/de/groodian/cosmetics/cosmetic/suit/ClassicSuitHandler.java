@@ -35,7 +35,8 @@ public class ClassicSuitHandler extends CosmeticHandler<ClassicSuitCosmetic> {
     }
 
     @Override
-    public void onUpdate() {}
+    public void onUpdate() {
+    }
 
     @Override
     public void onDisable() {

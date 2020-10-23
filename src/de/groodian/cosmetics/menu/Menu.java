@@ -1,7 +1,7 @@
 package de.groodian.cosmetics.menu;
 
-import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.cosmetics.HyperiorCosmetic;
+import de.groodian.cosmetics.player.CosmeticPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

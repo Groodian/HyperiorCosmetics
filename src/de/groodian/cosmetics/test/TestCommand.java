@@ -1,7 +1,7 @@
 package de.groodian.cosmetics.test;
 
-import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.cosmetics.HyperiorCosmetic;
+import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.hyperiorcore.main.HyperiorCore;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

@@ -1,8 +1,5 @@
 package de.groodian.cosmetics.cosmetic;
 
-import de.groodian.cosmetics.cosmetic.Category;
-import de.groodian.cosmetics.cosmetic.Cosmetic;
-
 import java.util.List;
 
 public abstract class CosmeticCollection<T extends Cosmetic> {

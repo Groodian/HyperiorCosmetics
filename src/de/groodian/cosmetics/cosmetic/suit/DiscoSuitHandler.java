@@ -18,7 +18,8 @@ public class DiscoSuitHandler extends CosmeticHandler<AdvancedSuitCosmetic> {
     }
 
     @Override
-    public void onEquip() {}
+    public void onEquip() {
+    }
 
     @Override
     public void onUpdate() {

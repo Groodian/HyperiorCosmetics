@@ -72,7 +72,7 @@ public class CosmeticPlayer {
                 disableCosmetic(cosmetic.getCategory());
                 instance.onEquip();
                 activeCosmetics.put(cosmetic.getCategory(), instance);
-                if(!onLogin) {
+                if (!onLogin) {
                     CosmeticMySQL.activate(getPlayer(), cosmetic);
                     getPlayer().sendMessage(HyperiorCosmetic.PREFIX + cosmetic.getRarity().getColor() + cosmetic.getName() + "§a aktiviert!");
                 }

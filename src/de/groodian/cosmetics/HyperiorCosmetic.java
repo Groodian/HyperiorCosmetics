@@ -27,7 +27,7 @@ public class HyperiorCosmetic extends JavaPlugin {
         cosmeticPlayerManager = new CosmeticPlayerManager();
         mainMenu = new MainMenu(this);
 
-        Bukkit.getScheduler().runTaskTimer(this, () -> cosmeticPlayerManager.updateAll(), 40, 5);
+        Bukkit.getScheduler().runTaskTimer(this, () -> cosmeticPlayerManager.updateAll(), 40, 4);
 
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§aGeladen!");
     }

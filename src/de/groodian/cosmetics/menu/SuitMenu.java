@@ -1,14 +1,15 @@
 package de.groodian.cosmetics.menu;
 
-import de.groodian.cosmetics.cosmetic.Category;
-import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.cosmetics.HyperiorCosmetic;
+import de.groodian.cosmetics.cosmetic.Category;
 import de.groodian.cosmetics.cosmetic.suit.SuitCollection;
+import de.groodian.cosmetics.player.CosmeticPlayer;
 import org.bukkit.inventory.Inventory;
 
 public class SuitMenu extends CosmeticMenu {
 
-    private static final int SUITS_PER_PAGE = 9;
+    private static final int SUITS_PER_PAGE = 5;
+    private static final int LEFT_OFFSET = 2;
 
     private SuitCollection suitCollection;
 
@@ -19,14 +20,16 @@ public class SuitMenu extends CosmeticMenu {
 
     @Override
     protected void setCosmetics(CosmeticPlayer cosmeticPlayer, Inventory inventory, int page) {
-        for (int i = (page - 1) * SUITS_PER_PAGE; i < page * SUITS_PER_PAGE; i++) {
-            if (i >= suitCollection.values().size()) {
+        int suitPos = (page - 1) * SUITS_PER_PAGE;
+        for (int i = 0; i < SUITS_PER_PAGE; i++) {
+            if (suitPos >= suitCollection.values().size()) {
                 break;
             }
-            putCosmetic(cosmeticPlayer, inventory, suitCollection.values().get(i).getHelmetSlot(), i - ((page - 1) * SUITS_PER_PAGE), page);
-            putCosmetic(cosmeticPlayer, inventory, suitCollection.values().get(i).getChestPlateSlot(), i - ((page - 1) * SUITS_PER_PAGE) + 9, page);
-            putCosmetic(cosmeticPlayer, inventory, suitCollection.values().get(i).getPantsSlot(), i - ((page - 1) * SUITS_PER_PAGE) + 18, page);
-            putCosmetic(cosmeticPlayer, inventory, suitCollection.values().get(i).getShoesSlot(), i - ((page - 1) * SUITS_PER_PAGE) + 27, page);
+            putCosmetic(cosmeticPlayer, inventory, suitCollection.values().get(suitPos).getHelmetSlot(), i + LEFT_OFFSET, page);
+            putCosmetic(cosmeticPlayer, inventory, suitCollection.values().get(suitPos).getChestPlateSlot(), i + LEFT_OFFSET + 9, page);
+            putCosmetic(cosmeticPlayer, inventory, suitCollection.values().get(suitPos).getPantsSlot(), i + LEFT_OFFSET + 18, page);
+            putCosmetic(cosmeticPlayer, inventory, suitCollection.values().get(suitPos).getShoesSlot(), i + LEFT_OFFSET + 27, page);
+            suitPos++;
         }
     }
 
