@@ -1,6 +1,6 @@
-package de.groodian.cosmetics.suit;
+package de.groodian.cosmetics.cosmetic.suit;
 
-import de.groodian.cosmetics.Cosmetic;
+import de.groodian.cosmetics.cosmetic.Cosmetic;
 
 import java.util.Arrays;
 import java.util.List;

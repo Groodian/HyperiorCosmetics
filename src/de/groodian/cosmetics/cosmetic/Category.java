@@ -1,4 +1,4 @@
-package de.groodian.cosmetics;
+package de.groodian.cosmetics.cosmetic;
 
 public enum Category {
 

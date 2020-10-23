@@ -1,6 +1,7 @@
 package de.groodian.cosmetics;
 
 import de.groodian.cosmetics.menu.MainMenu;
+import de.groodian.cosmetics.player.CosmeticPlayerManager;
 import de.groodian.cosmetics.test.TestCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -25,6 +26,8 @@ public class HyperiorCosmetic extends JavaPlugin {
 
         cosmeticPlayerManager = new CosmeticPlayerManager();
         mainMenu = new MainMenu(this);
+
+        Bukkit.getScheduler().runTaskTimer(this, () -> cosmeticPlayerManager.updateAll(), 40, 5);
 
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§aGeladen!");
     }

@@ -1,6 +1,8 @@
 package de.groodian.cosmetics;
 
 import com.google.gson.JsonObject;
+import de.groodian.cosmetics.cosmetic.Category;
+import de.groodian.cosmetics.cosmetic.Cosmetic;
 import de.groodian.hyperiorcore.main.HyperiorCore;
 import de.groodian.hyperiorcore.util.MySQL;
 import org.bukkit.Bukkit;

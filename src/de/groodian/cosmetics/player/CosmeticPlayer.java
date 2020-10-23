@@ -1,11 +1,17 @@
-package de.groodian.cosmetics;
+package de.groodian.cosmetics.player;
 
+import de.groodian.cosmetics.CosmeticMySQL;
+import de.groodian.cosmetics.HyperiorCosmetic;
+import de.groodian.cosmetics.cosmetic.Category;
+import de.groodian.cosmetics.cosmetic.Cosmetic;
+import de.groodian.cosmetics.cosmetic.CosmeticHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,12 +54,16 @@ public class CosmeticPlayer {
 
     public void activateCosmeticsToActivate() {
         for (Cosmetic cosmetic : cosmeticsToActivate) {
-            equip(cosmetic);
+            equip(cosmetic, true);
         }
         cosmeticsToActivate.clear();
     }
 
     public void equip(Cosmetic cosmetic) {
+        equip(cosmetic, false);
+    }
+
+    public void equip(Cosmetic cosmetic, boolean onLogin) {
         try {
             if (isOwningCosmetic(cosmetic)) {
                 ParameterizedType parameterizedType = (ParameterizedType) cosmetic.getClazz().getGenericSuperclass();
@@ -61,9 +71,11 @@ public class CosmeticPlayer {
                 CosmeticHandler<?> instance = cosmetic.getClazz().getDeclaredConstructor(CosmeticPlayer.class, genericClass).newInstance(this, cosmetic);
                 disableCosmetic(cosmetic.getCategory());
                 instance.onEquip();
-                CosmeticMySQL.activate(getPlayer(), cosmetic);
                 activeCosmetics.put(cosmetic.getCategory(), instance);
-                getPlayer().sendMessage(cosmetic.getRarity().getColor() + cosmetic.getName() + "§a aktiviert!");
+                if(!onLogin) {
+                    CosmeticMySQL.activate(getPlayer(), cosmetic);
+                    getPlayer().sendMessage(HyperiorCosmetic.PREFIX + cosmetic.getRarity().getColor() + cosmetic.getName() + "§a aktiviert!");
+                }
             }
         } catch (InstantiationException | NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
@@ -76,7 +88,7 @@ public class CosmeticPlayer {
             cosmeticHandler.onDisable();
             CosmeticMySQL.deactivate(getPlayer(), category);
             activeCosmetics.remove(category);
-            getPlayer().sendMessage(cosmeticHandler.getCosmetic().getRarity().getColor() + cosmeticHandler.getCosmetic().getName() + "§c deaktiviert!");
+            getPlayer().sendMessage(HyperiorCosmetic.PREFIX + cosmeticHandler.getCosmetic().getRarity().getColor() + cosmeticHandler.getCosmetic().getName() + "§c deaktiviert!");
         }
     }
 
@@ -96,6 +108,12 @@ public class CosmeticPlayer {
         cosmeticIds = newCosmeticIds;
     }
 
+    public void update() {
+        for (CosmeticHandler<?> cosmeticHandler : activeCosmetics.values()) {
+            cosmeticHandler.onUpdate();
+        }
+    }
+
     public boolean isOwningCosmetic(Cosmetic cosmetic) {
         for (Integer integer : cosmeticIds) {
             if (integer == cosmetic.getId()) {
@@ -112,6 +130,10 @@ public class CosmeticPlayer {
             }
         }
         return false;
+    }
+
+    public Collection<CosmeticHandler<?>> getHandlers() {
+        return activeCosmetics.values();
     }
 
     public UUID getUuid() {

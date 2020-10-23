@@ -1,5 +1,6 @@
-package de.groodian.cosmetics;
+package de.groodian.cosmetics.player;
 
+import de.groodian.cosmetics.player.CosmeticPlayer;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -19,6 +20,12 @@ public class CosmeticPlayerManager {
 
     public void unregisterPlayer(CosmeticPlayer cosmeticPlayer) {
         cosmeticPlayers.remove(cosmeticPlayer);
+    }
+
+    public void updateAll() {
+        for (CosmeticPlayer cosmeticPlayer : cosmeticPlayers) {
+            cosmeticPlayer.update();
+        }
     }
 
     public CosmeticPlayer getCosmeticPlayer(Player player) {

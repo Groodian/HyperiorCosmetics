@@ -1,5 +1,6 @@
 package de.groodian.cosmetics;
 
+import de.groodian.cosmetics.player.CosmeticPlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;

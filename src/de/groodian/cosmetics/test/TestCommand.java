@@ -1,7 +1,8 @@
 package de.groodian.cosmetics.test;
 
-import de.groodian.cosmetics.CosmeticPlayer;
+import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.cosmetics.HyperiorCosmetic;
+import de.groodian.hyperiorcore.main.HyperiorCore;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,7 +26,8 @@ public class TestCommand implements CommandExecutor {
             plugin.getMainMenu().open(cosmeticPlayer);
             return false;
         } else {
-            sender.sendMessage("Fehler!");
+            HyperiorCore.getCoinSystem().addCoins(player, 10000, false);
+            sender.sendMessage("COINS!");
         }
 
         return false;

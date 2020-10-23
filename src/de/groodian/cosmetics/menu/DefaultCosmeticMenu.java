@@ -1,8 +1,8 @@
 package de.groodian.cosmetics.menu;
 
-import de.groodian.cosmetics.Cosmetic;
-import de.groodian.cosmetics.CosmeticCollection;
-import de.groodian.cosmetics.CosmeticPlayer;
+import de.groodian.cosmetics.cosmetic.Cosmetic;
+import de.groodian.cosmetics.cosmetic.CosmeticCollection;
+import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.cosmetics.HyperiorCosmetic;
 import org.bukkit.inventory.Inventory;
 

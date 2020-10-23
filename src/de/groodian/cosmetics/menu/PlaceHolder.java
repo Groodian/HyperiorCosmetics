@@ -1,9 +1,9 @@
 package de.groodian.cosmetics.menu;
 
-import de.groodian.cosmetics.Category;
-import de.groodian.cosmetics.CosmeticCollection;
-import de.groodian.cosmetics.Rarity;
-import de.groodian.cosmetics.suit.ClassicSuitCosmetic;
+import de.groodian.cosmetics.cosmetic.Category;
+import de.groodian.cosmetics.cosmetic.CosmeticCollection;
+import de.groodian.cosmetics.cosmetic.Rarity;
+import de.groodian.cosmetics.cosmetic.suit.ClassicSuitCosmetic;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -23,7 +23,6 @@ public class PlaceHolder extends CosmeticCollection<ClassicSuitCosmetic> {
                 1,
                 "Lederhelm",
                 Category.HELMET,
-                1000,
                 Rarity.COMMON,
                 new ItemStack(Material.LEATHER_HELMET),
                 new ItemStack(Material.LEATHER_HELMET)

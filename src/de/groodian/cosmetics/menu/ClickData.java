@@ -1,6 +1,6 @@
 package de.groodian.cosmetics.menu;
 
-import de.groodian.cosmetics.CosmeticPlayer;
+import de.groodian.cosmetics.player.CosmeticPlayer;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;

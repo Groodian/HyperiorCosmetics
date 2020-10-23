@@ -1,4 +1,6 @@
-package de.groodian.cosmetics;
+package de.groodian.cosmetics.cosmetic;
+
+import de.groodian.cosmetics.player.CosmeticPlayer;
 
 public abstract class CosmeticHandler<T extends Cosmetic> {
 

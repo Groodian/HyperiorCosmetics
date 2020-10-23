@@ -1,8 +1,8 @@
 package de.groodian.cosmetics.menu;
 
-import de.groodian.cosmetics.Category;
-import de.groodian.cosmetics.Cosmetic;
-import de.groodian.cosmetics.CosmeticPlayer;
+import de.groodian.cosmetics.cosmetic.Category;
+import de.groodian.cosmetics.cosmetic.Cosmetic;
+import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.cosmetics.HyperiorCosmetic;
 import de.groodian.hyperiorcore.main.HyperiorCore;
 import de.groodian.hyperiorcore.util.HSound;
@@ -11,6 +11,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -99,7 +100,8 @@ public abstract class CosmeticMenu extends Menu {
         lore.add("§7Preis: §e" + cosmetic.getPrice() + " Coins");
         lore.add(" ");
         if (cosmeticPlayer.isOwningCosmetic(cosmetic)) {
-            itemMeta.addEnchant(Enchantment.DAMAGE_UNDEAD, 0, true);
+            itemMeta.addEnchant(Enchantment.DURABILITY, 0, true);
+            itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             if (cosmeticPlayer.isActiveCosmetic(cosmetic)) {
                 lore.add("§cKlicke zum Deaktivieren");
                 menuRunnable = clickData -> {
@@ -121,8 +123,8 @@ public abstract class CosmeticMenu extends Menu {
                     lore.add("§cDir fehlen §e" + (cosmetic.getPrice() - coins) + " Coins §cum");
                     lore.add("§cden Gegenstand zu Kaufen.");
                 } else {
-                    lore.add("§aKlicke um den Gegenstand für");
-                    lore.add("§e" + cosmetic.getPrice() + " Coins §azu Kaufen.");
+                    lore.add("§aKlicke um den Gegenstand");
+                    lore.add("§afür §e" + cosmetic.getPrice() + " Coins §azu Kaufen.");
                     menuRunnable = clickData -> {
                         HyperiorCore.getCoinSystem().removeCoins(cosmeticPlayer.getPlayer(), cosmetic.getPrice(), true);
                         cosmeticPlayer.addCosmetic(cosmetic);
