@@ -2,11 +2,11 @@ package de.groodian.cosmetics.cosmetic;
 
 import java.util.List;
 
-public abstract class CosmeticCollection<T extends Cosmetic> {
+public abstract class CosmeticCollection {
 
     private String name;
     private Category category;
-    private List<T> values;
+    private List<Cosmetic> values;
 
     public CosmeticCollection(String name, Category category) {
         this.name = name;
@@ -14,11 +14,11 @@ public abstract class CosmeticCollection<T extends Cosmetic> {
         values = registerValues();
     }
 
-    public List<T> values() {
+    public List<Cosmetic> values() {
         return values;
     }
 
-    protected abstract List<T> registerValues();
+    protected abstract List<Cosmetic> registerValues();
 
     public String getName() {
         return name;

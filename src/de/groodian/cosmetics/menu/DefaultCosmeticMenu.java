@@ -8,9 +8,9 @@ import org.bukkit.inventory.Inventory;
 
 public class DefaultCosmeticMenu extends CosmeticMenu {
 
-    private CosmeticCollection<? extends Cosmetic> cosmeticCollection;
+    private CosmeticCollection cosmeticCollection;
 
-    public DefaultCosmeticMenu(HyperiorCosmetic hyperiorCosmetic, CosmeticCollection<? extends Cosmetic> cosmeticCollection) {
+    public DefaultCosmeticMenu(HyperiorCosmetic hyperiorCosmetic, CosmeticCollection cosmeticCollection) {
         super(hyperiorCosmetic, cosmeticCollection.getName(), cosmeticCollection.getCategory());
         this.cosmeticCollection = cosmeticCollection;
     }
