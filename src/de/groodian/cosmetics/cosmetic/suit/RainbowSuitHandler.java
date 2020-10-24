@@ -1,13 +1,14 @@
 package de.groodian.cosmetics.cosmetic.suit;
 
 import de.groodian.cosmetics.cosmetic.CosmeticHandler;
+import de.groodian.cosmetics.cosmetic.DefaultCosmetic;
 import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.hyperiorcore.util.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class RainbowSuitHandler extends CosmeticHandler<AdvancedSuitCosmetic> {
+public class RainbowSuitHandler extends CosmeticHandler<DefaultCosmetic> {
 
     private static final int SPEED = 20;
 
@@ -17,7 +18,7 @@ public class RainbowSuitHandler extends CosmeticHandler<AdvancedSuitCosmetic> {
     private int green = 0;
     private int blue = 0;
 
-    public RainbowSuitHandler(CosmeticPlayer cosmeticPlayer, AdvancedSuitCosmetic cosmetic) {
+    public RainbowSuitHandler(CosmeticPlayer cosmeticPlayer, DefaultCosmetic cosmetic) {
         super(cosmeticPlayer, cosmetic);
 
         for (CosmeticHandler<?> cosmeticHandler : cosmeticPlayer.getHandlers()) {

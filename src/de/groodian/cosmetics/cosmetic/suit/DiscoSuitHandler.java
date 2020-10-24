@@ -1,6 +1,7 @@
 package de.groodian.cosmetics.cosmetic.suit;
 
 import de.groodian.cosmetics.cosmetic.CosmeticHandler;
+import de.groodian.cosmetics.cosmetic.DefaultCosmetic;
 import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.hyperiorcore.util.ItemBuilder;
 import org.bukkit.Material;
@@ -8,11 +9,11 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Random;
 
-public class DiscoSuitHandler extends CosmeticHandler<AdvancedSuitCosmetic> {
+public class DiscoSuitHandler extends CosmeticHandler<DefaultCosmetic> {
 
     private Random random;
 
-    public DiscoSuitHandler(CosmeticPlayer cosmeticPlayer, AdvancedSuitCosmetic cosmetic) {
+    public DiscoSuitHandler(CosmeticPlayer cosmeticPlayer, DefaultCosmetic cosmetic) {
         super(cosmeticPlayer, cosmetic);
         random = new Random();
     }
