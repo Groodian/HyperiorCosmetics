@@ -1,6 +1,7 @@
 package de.groodian.cosmetics.cosmetic.suit;
 
 import de.groodian.cosmetics.cosmetic.Category;
+import de.groodian.cosmetics.cosmetic.DefaultCosmetic;
 import de.groodian.cosmetics.cosmetic.Rarity;
 import de.groodian.hyperiorcore.util.ItemBuilder;
 import org.bukkit.Material;
@@ -296,7 +297,7 @@ public class SuitCollection {
                         )
                 ),
                 new Suit(
-                        new AdvancedSuitCosmetic(
+                        new DefaultCosmetic(
                                 DiscoSuitHandler.class,
                                 33,
                                 "Disco Helm",
@@ -304,7 +305,7 @@ public class SuitCollection {
                                 Rarity.EPIC,
                                 new ItemBuilder(Material.LEATHER_HELMET).setColorAndBuild(148, 0, 211)
                         ),
-                        new AdvancedSuitCosmetic(
+                        new DefaultCosmetic(
                                 DiscoSuitHandler.class,
                                 34,
                                 "Disco Brustplatte",
@@ -312,7 +313,7 @@ public class SuitCollection {
                                 Rarity.EPIC,
                                 new ItemBuilder(Material.LEATHER_CHESTPLATE).setColorAndBuild(148, 0, 211)
                         ),
-                        new AdvancedSuitCosmetic(
+                        new DefaultCosmetic(
                                 DiscoSuitHandler.class,
                                 35,
                                 "Disco Hose",
@@ -320,7 +321,7 @@ public class SuitCollection {
                                 Rarity.EPIC,
                                 new ItemBuilder(Material.LEATHER_LEGGINGS).setColorAndBuild(148, 0, 211)
                         ),
-                        new AdvancedSuitCosmetic(
+                        new DefaultCosmetic(
                                 DiscoSuitHandler.class,
                                 36,
                                 "Disco Schuhe",
@@ -330,7 +331,7 @@ public class SuitCollection {
                         )
                 ),
                 new Suit(
-                        new AdvancedSuitCosmetic(
+                        new DefaultCosmetic(
                                 RainbowSuitHandler.class,
                                 37,
                                 "Rainbow Helm",
@@ -338,7 +339,7 @@ public class SuitCollection {
                                 Rarity.LEGENDARY,
                                 new ItemBuilder(Material.LEATHER_HELMET).setColorAndBuild(52, 171, 235)
                         ),
-                        new AdvancedSuitCosmetic(
+                        new DefaultCosmetic(
                                 RainbowSuitHandler.class,
                                 28,
                                 "Rainbow Brustplatte",
@@ -346,7 +347,7 @@ public class SuitCollection {
                                 Rarity.LEGENDARY,
                                 new ItemBuilder(Material.LEATHER_CHESTPLATE).setColorAndBuild(52, 171, 235)
                         ),
-                        new AdvancedSuitCosmetic(
+                        new DefaultCosmetic(
                                 RainbowSuitHandler.class,
                                 39,
                                 "Rainbow Hose",
@@ -354,7 +355,7 @@ public class SuitCollection {
                                 Rarity.LEGENDARY,
                                 new ItemBuilder(Material.LEATHER_LEGGINGS).setColorAndBuild(52, 171, 235)
                         ),
-                        new AdvancedSuitCosmetic(
+                        new DefaultCosmetic(
                                 RainbowSuitHandler.class,
                                 40,
                                 "Rainbow Schuhe",
