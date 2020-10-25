@@ -341,7 +341,7 @@ public class SuitCollection {
                         ),
                         new DefaultCosmetic(
                                 RainbowSuitHandler.class,
-                                28,
+                                38,
                                 "Rainbow Brustplatte",
                                 Category.CHEST_PLATE,
                                 Rarity.LEGENDARY,
