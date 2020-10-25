@@ -107,12 +107,14 @@ public abstract class CosmeticMenu extends Menu {
                 menuRunnable = clickData -> {
                     cosmeticPlayer.disableCosmetic(cosmetic.getCategory());
                     setCosmetics(cosmeticPlayer, inventory, page);
+                    new HSound(Sound.CLICK).playFor(cosmeticPlayer.getPlayer());
                 };
             } else {
                 lore.add("§aKlicke zum Aktivieren");
                 menuRunnable = clickData -> {
                     cosmeticPlayer.equip(cosmetic);
                     setCosmetics(cosmeticPlayer, inventory, page);
+                    new HSound(Sound.CLICK).playFor(cosmeticPlayer.getPlayer());
                 };
             }
         } else {
@@ -129,6 +131,7 @@ public abstract class CosmeticMenu extends Menu {
                         HyperiorCore.getCoinSystem().removeCoins(cosmeticPlayer.getPlayer(), cosmetic.getPrice(), true);
                         cosmeticPlayer.addCosmetic(cosmetic);
                         setCosmetics(cosmeticPlayer, inventory, page);
+                        new HSound(Sound.LEVEL_UP).playFor(cosmeticPlayer.getPlayer());
                     };
                 }
             } else {
