@@ -7,6 +7,11 @@ import org.bukkit.inventory.Inventory;
 
 public class DefaultCosmeticMenu extends CosmeticMenu {
 
+    private static final int[] cosmeticSlots = new int[] {
+            10, 11, 12, 13, 14, 15, 16,
+            19, 20, 21, 22, 23, 24, 25
+    };
+
     private CosmeticCollection cosmeticCollection;
 
     public DefaultCosmeticMenu(HyperiorCosmetic hyperiorCosmetic, CosmeticCollection cosmeticCollection) {
@@ -16,11 +21,13 @@ public class DefaultCosmeticMenu extends CosmeticMenu {
 
     @Override
     protected void setCosmetics(CosmeticPlayer cosmeticPlayer, Inventory inventory, int page) {
-        for (int i = (page - 1) * 27; i < page * 27; i++) {
+        int cosmeticPos = (page - 1) * cosmeticSlots.length;
+        for (int i = 0; i < cosmeticSlots.length; i++) {
             if (i >= cosmeticCollection.values().size()) {
                 break;
             }
-            putCosmetic(cosmeticPlayer, inventory, cosmeticCollection.values().get(i), i - ((page - 1) * 27), page);
+            putCosmetic(cosmeticPlayer, inventory, cosmeticCollection.values().get(cosmeticPos), cosmeticSlots[i], page);
+            cosmeticPos++;
         }
     }
 
