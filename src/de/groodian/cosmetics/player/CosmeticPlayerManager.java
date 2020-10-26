@@ -21,9 +21,9 @@ public class CosmeticPlayerManager {
         cosmeticPlayers.remove(cosmeticPlayer);
     }
 
-    public void updateAll() {
+    public void updateAll(long tick) {
         for (CosmeticPlayer cosmeticPlayer : cosmeticPlayers) {
-            cosmeticPlayer.update();
+            cosmeticPlayer.update(tick);
         }
     }
 

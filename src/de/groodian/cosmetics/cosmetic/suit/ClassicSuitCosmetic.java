@@ -10,7 +10,7 @@ public class ClassicSuitCosmetic extends Cosmetic {
     private ItemStack equipItem;
 
     public ClassicSuitCosmetic(int id, String name, Category category, Rarity rarity, ItemStack inventoryItem, ItemStack equipItem) {
-        super(ClassicSuitHandler.class, id, name, category, rarity, inventoryItem);
+        super(ClassicSuitHandler.class, id, name, category, rarity, 0, inventoryItem);
         this.equipItem = equipItem;
     }
 

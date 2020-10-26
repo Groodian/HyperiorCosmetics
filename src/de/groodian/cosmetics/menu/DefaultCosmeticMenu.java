@@ -7,7 +7,7 @@ import org.bukkit.inventory.Inventory;
 
 public class DefaultCosmeticMenu extends CosmeticMenu {
 
-    private static final int[] cosmeticSlots = new int[] {
+    private static final int[] cosmeticSlots = new int[]{
             10, 11, 12, 13, 14, 15, 16,
             19, 20, 21, 22, 23, 24, 25
     };

@@ -11,6 +11,7 @@ public class HyperiorCosmetic extends JavaPlugin {
 
     public static final String PREFIX = "§aCosmetics §7» ";
 
+    private long tick = 0;
     private CosmeticPlayerManager cosmeticPlayerManager;
     private MainMenu mainMenu;
 
@@ -27,7 +28,7 @@ public class HyperiorCosmetic extends JavaPlugin {
         cosmeticPlayerManager = new CosmeticPlayerManager();
         mainMenu = new MainMenu(this);
 
-        Bukkit.getScheduler().runTaskTimer(this, () -> cosmeticPlayerManager.updateAll(), 40, 4);
+        Bukkit.getScheduler().runTaskTimer(this, () -> cosmeticPlayerManager.updateAll(tick++), 40, 1);
 
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§aGeladen!");
     }

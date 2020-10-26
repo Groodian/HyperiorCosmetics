@@ -15,14 +15,16 @@ public abstract class Cosmetic {
     protected String name;
     protected Category category;
     protected Rarity rarity;
+    protected int updateRate;
     protected ItemStack inventoryItem;
 
-    public Cosmetic(Class<? extends CosmeticHandler<?>> clazz, int id, String name, Category category, Rarity rarity, ItemStack inventoryItem) {
+    public Cosmetic(Class<? extends CosmeticHandler<?>> clazz, int id, String name, Category category, Rarity rarity, int updateRate, ItemStack inventoryItem) {
         this.clazz = clazz;
         this.id = id;
         this.name = name;
         this.category = category;
         this.rarity = rarity;
+        this.updateRate = updateRate;
         this.inventoryItem = inventoryItem;
 
         cosmetics.add(this);
@@ -51,6 +53,10 @@ public abstract class Cosmetic {
 
     public Rarity getRarity() {
         return rarity;
+    }
+
+    public int getUpdateRate() {
+        return updateRate;
     }
 
     public ItemStack getInventoryItem() {

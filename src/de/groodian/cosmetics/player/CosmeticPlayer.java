@@ -108,9 +108,13 @@ public class CosmeticPlayer {
         cosmeticIds = newCosmeticIds;
     }
 
-    public void update() {
+    public void update(long tick) {
         for (CosmeticHandler<?> cosmeticHandler : activeCosmetics.values()) {
-            cosmeticHandler.onUpdate();
+            if (cosmeticHandler.getCosmetic().getUpdateRate() > 0) {
+                if (tick % cosmeticHandler.getCosmetic().getUpdateRate() == 0) {
+                    cosmeticHandler.onUpdate();
+                }
+            }
         }
     }
 

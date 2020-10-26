@@ -303,6 +303,7 @@ public class SuitCollection {
                                 "Disco Helm",
                                 Category.HELMET,
                                 Rarity.EPIC,
+                                10,
                                 new ItemBuilder(Material.LEATHER_HELMET).setColorAndBuild(148, 0, 211)
                         ),
                         new DefaultCosmetic(
@@ -311,6 +312,7 @@ public class SuitCollection {
                                 "Disco Brustplatte",
                                 Category.CHEST_PLATE,
                                 Rarity.EPIC,
+                                10,
                                 new ItemBuilder(Material.LEATHER_CHESTPLATE).setColorAndBuild(148, 0, 211)
                         ),
                         new DefaultCosmetic(
@@ -319,6 +321,7 @@ public class SuitCollection {
                                 "Disco Hose",
                                 Category.PANTS,
                                 Rarity.EPIC,
+                                10,
                                 new ItemBuilder(Material.LEATHER_LEGGINGS).setColorAndBuild(148, 0, 211)
                         ),
                         new DefaultCosmetic(
@@ -327,6 +330,7 @@ public class SuitCollection {
                                 "Disco Schuhe",
                                 Category.SHOES,
                                 Rarity.EPIC,
+                                10,
                                 new ItemBuilder(Material.LEATHER_BOOTS).setColorAndBuild(148, 0, 211)
                         )
                 ),
@@ -337,6 +341,7 @@ public class SuitCollection {
                                 "Rainbow Helm",
                                 Category.HELMET,
                                 Rarity.LEGENDARY,
+                                3,
                                 new ItemBuilder(Material.LEATHER_HELMET).setColorAndBuild(52, 171, 235)
                         ),
                         new DefaultCosmetic(
@@ -345,6 +350,7 @@ public class SuitCollection {
                                 "Rainbow Brustplatte",
                                 Category.CHEST_PLATE,
                                 Rarity.LEGENDARY,
+                                3,
                                 new ItemBuilder(Material.LEATHER_CHESTPLATE).setColorAndBuild(52, 171, 235)
                         ),
                         new DefaultCosmetic(
@@ -353,6 +359,7 @@ public class SuitCollection {
                                 "Rainbow Hose",
                                 Category.PANTS,
                                 Rarity.LEGENDARY,
+                                3,
                                 new ItemBuilder(Material.LEATHER_LEGGINGS).setColorAndBuild(52, 171, 235)
                         ),
                         new DefaultCosmetic(
@@ -361,6 +368,7 @@ public class SuitCollection {
                                 "Rainbow Schuhe",
                                 Category.SHOES,
                                 Rarity.LEGENDARY,
+                                3,
                                 new ItemBuilder(Material.LEATHER_BOOTS).setColorAndBuild(52, 171, 235)
                         )
                 )

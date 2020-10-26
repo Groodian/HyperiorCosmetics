@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class RainbowSuitHandler extends CosmeticHandler<DefaultCosmetic> {
 
-    private static final int SPEED = 20;
+    private static final int SPEED = 15;
 
     private boolean isMaster = true;
 
