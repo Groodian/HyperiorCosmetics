@@ -2,11 +2,10 @@ package de.groodian.cosmetics.cosmetic.particle;
 
 import de.groodian.cosmetics.cosmetic.CosmeticHandler;
 import de.groodian.cosmetics.player.CosmeticPlayer;
-import de.groodian.hyperiorcore.util.Particle;
 
-public class ParticleHandler extends CosmeticHandler<ParticleCosmetic> {
+public class ClassicParticleHandler extends CosmeticHandler<ClassicParticleCosmetic> {
 
-    public ParticleHandler(CosmeticPlayer cosmeticPlayer, ParticleCosmetic cosmetic) {
+    public ClassicParticleHandler(CosmeticPlayer cosmeticPlayer, ClassicParticleCosmetic cosmetic) {
         super(cosmeticPlayer, cosmetic);
     }
 
@@ -16,7 +15,7 @@ public class ParticleHandler extends CosmeticHandler<ParticleCosmetic> {
 
     @Override
     public void onUpdate() {
-        new Particle(cosmetic.getParticleType(), cosmeticPlayer.getPlayer().getLocation().add(0, 0.35, 0), false, 0, 0, 0, 0, 0, 0).sendAll();
+        cosmetic.getParticle().send(cosmeticPlayer.getPlayer().getLocation());
     }
 
     @Override
