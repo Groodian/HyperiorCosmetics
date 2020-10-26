@@ -14,7 +14,7 @@ public class BlockCosmetic extends Cosmetic {
     private byte subId;
 
     public BlockCosmetic(Class<? extends CosmeticHandler<?>> clazz, int id, String name, Rarity rarity, ItemStack inventoryItem, boolean onGround, Material material, byte subId) {
-        super(clazz, id, name, Category.BLOCK, rarity, 10, inventoryItem);
+        super(clazz, id, name, Category.BLOCK, rarity, 4, inventoryItem);
         this.onGround = onGround;
         this.material = material;
         this.subId = subId;
