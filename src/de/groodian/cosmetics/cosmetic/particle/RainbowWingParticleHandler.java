@@ -18,7 +18,11 @@ public class RainbowWingParticleHandler extends WingParticleHandler<DefaultCosme
     }
 
     @Override
-    protected void update() {
+    public void onEquip() {
+    }
+
+    @Override
+    public void onUpdate() {
         for (int i = 0; i < SPEED; i++) {
             if (red > 0 && blue == 0) {
                 red--;
@@ -34,6 +38,10 @@ public class RainbowWingParticleHandler extends WingParticleHandler<DefaultCosme
             }
         }
         setWing(new Particle(EnumParticle.REDSTONE, false, red, green, blue, 1, 0, 0));
+    }
+
+    @Override
+    public void onDisable() {
     }
 
 }

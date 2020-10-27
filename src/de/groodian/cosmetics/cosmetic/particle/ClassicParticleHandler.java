@@ -1,9 +1,8 @@
 package de.groodian.cosmetics.cosmetic.particle;
 
-import de.groodian.cosmetics.cosmetic.CosmeticHandler;
 import de.groodian.cosmetics.player.CosmeticPlayer;
 
-public class ClassicParticleHandler extends CosmeticHandler<ClassicParticleCosmetic> {
+public class ClassicParticleHandler extends ParticleHandler<ClassicParticleCosmetic> {
 
     public ClassicParticleHandler(CosmeticPlayer cosmeticPlayer, ClassicParticleCosmetic cosmetic) {
         super(cosmeticPlayer, cosmetic);
@@ -15,7 +14,7 @@ public class ClassicParticleHandler extends CosmeticHandler<ClassicParticleCosme
 
     @Override
     public void onUpdate() {
-        cosmetic.getParticle().send(cosmeticPlayer.getPlayer().getLocation());
+        cosmetic.getParticle().send(cosmeticPlayer.getPlayer().getLocation().add(0, 0.3, 0));
     }
 
     @Override

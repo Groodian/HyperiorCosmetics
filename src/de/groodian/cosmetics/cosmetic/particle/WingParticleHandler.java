@@ -1,13 +1,12 @@
 package de.groodian.cosmetics.cosmetic.particle;
 
 import de.groodian.cosmetics.cosmetic.Cosmetic;
-import de.groodian.cosmetics.cosmetic.CosmeticHandler;
 import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.hyperiorcore.util.Particle;
 import org.bukkit.Location;
 
 
-public abstract class WingParticleHandler<T extends Cosmetic> extends CosmeticHandler<T> {
+public abstract class WingParticleHandler<T extends Cosmetic> extends ParticleHandler<T> {
 
     private static final double SPACE = 0.2;
     private static final double ANIMATION_SPACE = 0.04;
@@ -32,17 +31,6 @@ public abstract class WingParticleHandler<T extends Cosmetic> extends CosmeticHa
     public WingParticleHandler(CosmeticPlayer cosmeticPlayer, T cosmetic) {
         super(cosmeticPlayer, cosmetic);
     }
-
-    @Override
-    public void onEquip() {
-    }
-
-    @Override
-    public void onUpdate() {
-        update();
-    }
-
-    protected abstract void update();
 
     protected void setWing(Particle particle) {
         Location location = cosmeticPlayer.getPlayer().getLocation();
@@ -86,21 +74,6 @@ public abstract class WingParticleHandler<T extends Cosmetic> extends CosmeticHa
                 wingForwards = true;
             }
         }
-    }
-
-    private Location rotateAroundYAxis(Location center, Location location, float degree) {
-        double distanceX = center.getX() - location.getX();
-        double distanceZ = center.getZ() - location.getZ();
-        double rotation = Math.toRadians(degree);
-        double cos = Math.cos(rotation);
-        double sin = Math.sin(rotation);
-        Location rotatedLocation = center.clone().add((distanceX * cos) - (distanceZ * sin), 0, (distanceX * sin) + (distanceZ * cos));
-        rotatedLocation.setY(location.getY());
-        return rotatedLocation;
-    }
-
-    @Override
-    public void onDisable() {
     }
 
 }

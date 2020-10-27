@@ -1,12 +1,11 @@
 package de.groodian.cosmetics.cosmetic.particle;
 
-import de.groodian.cosmetics.cosmetic.CosmeticHandler;
 import de.groodian.cosmetics.cosmetic.DefaultCosmetic;
 import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.hyperiorcore.util.Particle;
 import net.minecraft.server.v1_8_R3.EnumParticle;
 
-public class DustParticleHandler extends CosmeticHandler<DefaultCosmetic> {
+public class DustParticleHandler extends ParticleHandler<DefaultCosmetic> {
 
     private static final int SPEED = 10;
 

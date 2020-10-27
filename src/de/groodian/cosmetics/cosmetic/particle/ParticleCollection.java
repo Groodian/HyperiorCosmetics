@@ -26,7 +26,7 @@ public class ParticleCollection extends CosmeticCollection {
                         ClassicParticleHandler.class,
                         201,
                         "Wasser Spur",
-                        Rarity.RARE,
+                        Rarity.UNCOMMON,
                         new ItemBuilder(Material.WATER_BUCKET).build(),
                         new Particle(EnumParticle.DRIP_WATER)
                 ),
@@ -34,7 +34,7 @@ public class ParticleCollection extends CosmeticCollection {
                         ClassicParticleHandler.class,
                         202,
                         "Grüne Spur",
-                        Rarity.RARE,
+                        Rarity.UNCOMMON,
                         new ItemBuilder(Material.EMERALD).build(),
                         new Particle(EnumParticle.VILLAGER_HAPPY)
                 ),
@@ -71,29 +71,47 @@ public class ParticleCollection extends CosmeticCollection {
                         1,
                         new ItemBuilder(Material.REDSTONE).build()
                 ),
-                new WingParticleCosmetic(
+                new DefaultCosmetic(
+                        PortalParticleHandler.class,
                         207,
+                        "EnderAura",
+                        Category.PARTICLE,
+                        Rarity.EPIC,
+                        5,
+                        new ItemBuilder(Material.EYE_OF_ENDER).build()
+                ),
+                new DefaultCosmetic(
+                        RingParticleHandler.class,
+                        208,
+                        "Feuer Ring",
+                        Category.PARTICLE,
+                        Rarity.EPIC,
+                        1,
+                        new ItemBuilder(Material.BLAZE_POWDER).build()
+                ),
+                new WingParticleCosmetic(
+                        209,
                         "Weiße Flügel",
                         Rarity.LEGENDARY,
                         new ItemBuilder(Material.FEATHER).build(),
                         new Particle(EnumParticle.REDSTONE, false, 255, 255, 255, 1, 0, 0)
                 ),
                 new WingParticleCosmetic(
-                        208,
+                        210,
                         "Rote Flügel",
                         Rarity.LEGENDARY,
                         new ItemBuilder(Material.INK_SACK, (short) 1).build(),
                         new Particle(EnumParticle.REDSTONE, false, 255, 0, 0, 1, 0, 0)
                 ),
                 new WingParticleCosmetic(
-                        209,
+                        211,
                         "Grüne Flügel",
                         Rarity.LEGENDARY,
                         new ItemBuilder(Material.INK_SACK, (short) 10).build(),
                         new Particle(EnumParticle.REDSTONE, false, 127, 255, 0, 1, 0, 0)
                 ),
                 new WingParticleCosmetic(
-                        210,
+                        212,
                         "Orange Flügel",
                         Rarity.LEGENDARY,
                         new ItemBuilder(Material.INK_SACK, (short) 14).build(),
@@ -101,7 +119,7 @@ public class ParticleCollection extends CosmeticCollection {
                 ),
                 new DefaultCosmetic(
                         RainbowWingParticleHandler.class,
-                        211,
+                        213,
                         "Regenbogen Flügel",
                         Category.PARTICLE,
                         Rarity.MYSTIC,
