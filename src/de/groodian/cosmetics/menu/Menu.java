@@ -48,7 +48,6 @@ public abstract class Menu implements Listener {
             Map<ItemStack, MenuRunnable> map = menuRunnableMap.get(inventory);
             map.put(itemStack, menuRunnable);
         } else {
-            Bukkit.broadcastMessage("Created Inventory");
             Map<ItemStack, MenuRunnable> map = new HashMap<>();
             map.put(itemStack, menuRunnable);
             menuRunnableMap.put(inventory, map);
@@ -99,7 +98,6 @@ public abstract class Menu implements Listener {
     public void handleInventoryClose(InventoryCloseEvent e) {
         if (menuRunnableMap.containsKey(e.getInventory())) {
             menuRunnableMap.remove(e.getInventory());
-            Bukkit.broadcastMessage("Removed Inventory");
         }
     }
 

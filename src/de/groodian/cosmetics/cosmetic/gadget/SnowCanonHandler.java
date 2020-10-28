@@ -3,7 +3,6 @@ package de.groodian.cosmetics.cosmetic.gadget;
 import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.hyperiorcore.util.Particle;
 import net.minecraft.server.v1_8_R3.EnumParticle;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Snowball;
 import org.bukkit.event.player.PlayerInteractEvent;
 

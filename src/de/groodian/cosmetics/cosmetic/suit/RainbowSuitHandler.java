@@ -4,7 +4,6 @@ import de.groodian.cosmetics.cosmetic.CosmeticHandler;
 import de.groodian.cosmetics.cosmetic.DefaultCosmetic;
 import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.hyperiorcore.util.ItemBuilder;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -68,7 +67,6 @@ public class RainbowSuitHandler extends CosmeticHandler<DefaultCosmetic> {
                 for (CosmeticHandler<?> cosmeticHandler : cosmeticPlayer.getHandlers()) {
                     if (cosmeticHandler instanceof RainbowSuitHandler) {
                         ((RainbowSuitHandler) cosmeticHandler).newMaster();
-                        Bukkit.broadcastMessage("New MAster!!!!!");
                         break;
                     }
                 }
