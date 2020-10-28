@@ -20,6 +20,7 @@ import java.util.UUID;
 public class CosmeticPlayer {
 
     private UUID uuid;
+    private HyperiorCosmetic hyperiorCosmetic;
     private int[] cosmeticIds;
     private List<Cosmetic> cosmeticsToActivate;
 
@@ -28,8 +29,9 @@ public class CosmeticPlayer {
     /**
      * This constructor should be executed async
      */
-    public CosmeticPlayer(UUID uuid) {
+    public CosmeticPlayer(UUID uuid, HyperiorCosmetic hyperiorCosmetic) {
         this.uuid = uuid;
+        this.hyperiorCosmetic = hyperiorCosmetic;
         cosmeticsToActivate = new ArrayList<>();
         activeCosmetics = new HashMap<>();
         loadDataFromDatabase();
@@ -142,6 +144,10 @@ public class CosmeticPlayer {
 
     public UUID getUuid() {
         return uuid;
+    }
+
+    public HyperiorCosmetic getHyperiorCosmetic() {
+        return hyperiorCosmetic;
     }
 
     public Player getPlayer() {

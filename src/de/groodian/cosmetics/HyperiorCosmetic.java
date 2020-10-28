@@ -3,13 +3,20 @@ package de.groodian.cosmetics;
 import de.groodian.cosmetics.menu.MainMenu;
 import de.groodian.cosmetics.player.CosmeticPlayerManager;
 import de.groodian.cosmetics.test.TestCommand;
+import de.groodian.hyperiorcore.util.ItemBuilder;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class HyperiorCosmetic extends JavaPlugin {
 
     public static final String PREFIX = "§aCosmetics §7» ";
+    public static final int COSMETIC_SLOT = 4;
+    public static final int GADGET_SLOT = 8;
+    public static final ItemStack COSMETIC_ITEM = new ItemBuilder(Material.CHEST).setName("§6§lKosmetik §7(Rechtsklick)").build();
+    public static final ItemStack NO_GADGET_EQUIPPED_ITEM = new ItemBuilder(Material.FIREWORK_CHARGE).setName("§cKein Gadget ausgewählt!").build();
 
     private long tick = 0;
     private CosmeticPlayerManager cosmeticPlayerManager;

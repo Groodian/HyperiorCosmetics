@@ -2,6 +2,7 @@ package de.groodian.cosmetics.menu;
 
 import de.groodian.cosmetics.HyperiorCosmetic;
 import de.groodian.cosmetics.cosmetic.block.BlockCollection;
+import de.groodian.cosmetics.cosmetic.gadget.GadgetCollection;
 import de.groodian.cosmetics.cosmetic.particle.ParticleCollection;
 import de.groodian.cosmetics.cosmetic.suit.SuitCollection;
 import de.groodian.cosmetics.player.CosmeticPlayer;
@@ -26,7 +27,7 @@ public class MainMenu extends Menu {
                 new MenuCategory(new ItemBuilder(Material.REDSTONE).setName("§aPartikel").build(), 11, new DefaultCosmeticMenu(hyperiorCosmetic, new ParticleCollection())),
                 new MenuCategory(new ItemBuilder(Material.GOLD_BLOCK).setName("§aBlockspuren").build(), 15, new DefaultCosmeticMenu(hyperiorCosmetic, new BlockCollection())),
                 new MenuCategory(new ItemBuilder(Material.DIAMOND_CHESTPLATE).setName("§aAnzüge").build(), 29, new SuitMenu(hyperiorCosmetic, new SuitCollection())),
-                new MenuCategory(new ItemBuilder(Material.REDSTONE_COMPARATOR).setName("§aGadgets").build(), 33, new DefaultCosmeticMenu(hyperiorCosmetic, new PlaceHolder()))
+                new MenuCategory(new ItemBuilder(Material.REDSTONE_COMPARATOR).setName("§aGadgets").build(), 33, new DefaultCosmeticMenu(hyperiorCosmetic, new GadgetCollection()))
         );
 
     }
