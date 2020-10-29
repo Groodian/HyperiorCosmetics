@@ -1,5 +1,6 @@
 package de.groodian.cosmetics;
 
+import de.groodian.cosmetics.menu.CrateMenu;
 import de.groodian.cosmetics.menu.MainMenu;
 import de.groodian.cosmetics.player.CosmeticPlayerManager;
 import de.groodian.cosmetics.test.TestCommand;
@@ -21,6 +22,7 @@ public class HyperiorCosmetic extends JavaPlugin {
     private long tick = 0;
     private CosmeticPlayerManager cosmeticPlayerManager;
     private MainMenu mainMenu;
+    private CrateMenu crateMenu;
 
     public void onEnable() {
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§aDas Plugin wird geladen...");
@@ -34,6 +36,7 @@ public class HyperiorCosmetic extends JavaPlugin {
 
         cosmeticPlayerManager = new CosmeticPlayerManager();
         mainMenu = new MainMenu(this);
+        crateMenu = new CrateMenu(this);
 
         Bukkit.getScheduler().runTaskTimer(this, () -> cosmeticPlayerManager.updateAll(tick++), 40, 1);
 
@@ -52,6 +55,10 @@ public class HyperiorCosmetic extends JavaPlugin {
 
     public MainMenu getMainMenu() {
         return mainMenu;
+    }
+
+    public CrateMenu getCrateMenu() {
+        return crateMenu;
     }
 
 }

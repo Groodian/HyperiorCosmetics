@@ -72,4 +72,8 @@ public abstract class Cosmetic {
         return null;
     }
 
+    public static List<Cosmetic> getCosmetics() {
+        return cosmetics;
+    }
+
 }

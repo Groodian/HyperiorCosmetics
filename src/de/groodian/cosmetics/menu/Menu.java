@@ -96,13 +96,7 @@ public abstract class Menu implements Listener {
 
     @EventHandler
     public void handleInventoryClose(InventoryCloseEvent e) {
-        if (menuRunnableMap.containsKey(e.getInventory())) {
-            menuRunnableMap.remove(e.getInventory());
-        }
-    }
-
-    protected boolean compareItemNames(ItemStack itemStack0, ItemStack itemStack1) {
-        return itemStack0.getItemMeta().getDisplayName().equals(itemStack1.getItemMeta().getDisplayName());
+        menuRunnableMap.remove(e.getInventory());
     }
 
 }

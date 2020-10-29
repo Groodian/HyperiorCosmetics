@@ -24,10 +24,10 @@ public class TestCommand implements CommandExecutor {
 
         if (args.length == 0) {
             plugin.getMainMenu().open(cosmeticPlayer);
-            return false;
+        } else if (args.length == 1) {
+            plugin.getCrateMenu().open(cosmeticPlayer);
         } else {
             HyperiorCore.getCoinSystem().addCoins(player, 10000, false);
-            sender.sendMessage("COINS!");
         }
 
         return false;
