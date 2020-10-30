@@ -1,6 +1,6 @@
 package de.groodian.cosmetics.cosmetic;
 
-import org.bukkit.Bukkit;
+import de.groodian.hyperiorcore.util.ItemBuilder;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -28,7 +28,12 @@ public abstract class Cosmetic {
         this.inventoryItem = inventoryItem;
 
         cosmetics.add(this);
-        Bukkit.getConsoleSender().sendMessage("Cosmetics: " + cosmetics.size());
+        inventoryItem = new ItemBuilder(inventoryItem).setName(rarity.getColor() + name).setLore(
+                " ",
+                "§7Seltenheit: " + rarity.getColor() + rarity.getName(),
+                "§7Kategorie: " + category.getName(),
+                "§7Preis: §e" + getPrice() + " Coins"
+        ).build();
     }
 
     public Class<? extends CosmeticHandler<?>> getClazz() {

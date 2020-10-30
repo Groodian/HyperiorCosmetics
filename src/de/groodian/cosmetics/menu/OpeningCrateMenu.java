@@ -4,14 +4,13 @@ import de.groodian.cosmetics.HyperiorCosmetic;
 import de.groodian.cosmetics.cosmetic.Cosmetic;
 import de.groodian.cosmetics.cosmetic.Rarity;
 import de.groodian.cosmetics.player.CosmeticPlayer;
+import de.groodian.hyperiorcore.main.HyperiorCore;
 import de.groodian.hyperiorcore.util.HSound;
 import de.groodian.hyperiorcore.util.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,12 +49,18 @@ public class OpeningCrateMenu extends Menu {
                 Bukkit.getScheduler().scheduleSyncDelayedTask(hyperiorCosmetic, () -> {
                     new HSound(Sound.LEVEL_UP).playFor(cosmeticPlayer.getPlayer());
                     Cosmetic cosmetic = cosmetics.get(4);
-                    cosmeticPlayer.getPlayer().sendMessage(HyperiorCosmetic.PREFIX + "§aDein Gewinn: " + cosmetic.getRarity().getColor() + cosmetic.getName());
                     Rarity rarity = cosmetic.getRarity();
                     for (int i = 9; i < 36; i++) {
                         if (i != 22) {
                             putItem(inventory, new ItemBuilder(Material.STAINED_GLASS_PANE, rarity.getSubId()).setName(rarity.getColor() + rarity.getName()).build(), i, null);
                         }
+                    }
+                    if (cosmeticPlayer.isOwningCosmetic(cosmetic)) {
+                        HyperiorCore.getCoinSystem().addCoins(cosmeticPlayer.getPlayer(), cosmetic.getRarity().getSellPrice(), false);
+                        putItem(inventory, new ItemBuilder(cosmetic.getInventoryItem().clone()).addLore(" ", "§cDu besitzt diesen Gegenstand bereits!", "§cDieser Gegenstand wurde automatisch", "§cfür §e" + cosmetic.getRarity().getSellPrice() + " Coins §cverkauft.").build(), 22, null);
+                    } else {
+                        cosmeticPlayer.getPlayer().sendMessage(HyperiorCosmetic.PREFIX + "§aDein Gewinn: " + cosmetic.getRarity().getColor() + cosmetic.getName());
+                        cosmeticPlayer.addCosmetic(cosmetic);
                     }
                 }, 10);
             } else {
@@ -70,11 +75,7 @@ public class OpeningCrateMenu extends Menu {
             for (Cosmetic cosmetic : cosmetics) {
                 Rarity rarity = cosmetic.getRarity();
                 putItem(inventory, new ItemBuilder(Material.STAINED_GLASS_PANE, rarity.getSubId()).setName(rarity.getColor() + rarity.getName()).build(), column + 9, null);
-                ItemStack itemStack = cosmetic.getInventoryItem().clone();
-                ItemMeta itemMeta = itemStack.getItemMeta();
-                itemMeta.setDisplayName(rarity.getColor() + "§l" + cosmetic.getName());
-                itemStack.setItemMeta(itemMeta);
-                putItem(inventory, itemStack, column + 18, null);
+                putItem(inventory, cosmetic.getInventoryItem(), column + 18, null);
                 putItem(inventory, new ItemBuilder(Material.STAINED_GLASS_PANE, rarity.getSubId()).setName(rarity.getColor() + rarity.getName()).build(), column + 27, null);
                 column++;
             }

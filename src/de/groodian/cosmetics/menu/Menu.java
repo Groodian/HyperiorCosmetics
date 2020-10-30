@@ -44,13 +44,15 @@ public abstract class Menu implements Listener {
     protected abstract void putItems(CosmeticPlayer cosmeticPlayer, Inventory inventory, int page);
 
     protected void putItem(Inventory inventory, ItemStack itemStack, int slot, MenuRunnable menuRunnable) {
-        if (menuRunnableMap.containsKey(inventory)) {
-            Map<ItemStack, MenuRunnable> map = menuRunnableMap.get(inventory);
-            map.put(itemStack, menuRunnable);
-        } else {
-            Map<ItemStack, MenuRunnable> map = new HashMap<>();
-            map.put(itemStack, menuRunnable);
-            menuRunnableMap.put(inventory, map);
+        if (menuRunnable != null) {
+            if (menuRunnableMap.containsKey(inventory)) {
+                Map<ItemStack, MenuRunnable> map = menuRunnableMap.get(inventory);
+                map.put(itemStack, menuRunnable);
+            } else {
+                Map<ItemStack, MenuRunnable> map = new HashMap<>();
+                map.put(itemStack, menuRunnable);
+                menuRunnableMap.put(inventory, map);
+            }
         }
         inventory.setItem(slot, itemStack);
     }

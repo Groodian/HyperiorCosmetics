@@ -7,6 +7,7 @@ import de.groodian.cosmetics.test.TestCommand;
 import de.groodian.hyperiorcore.util.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,6 +20,8 @@ public class HyperiorCosmetic extends JavaPlugin {
     public static final ItemStack COSMETIC_ITEM = new ItemBuilder(Material.CHEST).setName("§6§lKosmetik §7(Rechtsklick)").build();
     public static final ItemStack NO_GADGET_EQUIPPED_ITEM = new ItemBuilder(Material.FIREWORK_CHARGE).setName("§cKein Gadget ausgewählt!").build();
 
+    private static HyperiorCosmetic instance;
+
     private long tick = 0;
     private CosmeticPlayerManager cosmeticPlayerManager;
     private MainMenu mainMenu;
@@ -26,6 +29,8 @@ public class HyperiorCosmetic extends JavaPlugin {
 
     public void onEnable() {
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§aDas Plugin wird geladen...");
+
+        instance = this;
 
         CosmeticMySQL.init(this);
 
@@ -59,6 +64,12 @@ public class HyperiorCosmetic extends JavaPlugin {
 
     public CrateMenu getCrateMenu() {
         return crateMenu;
+    }
+
+    public static void openCrateMenu(Player player) {
+        if (instance.crateMenu != null && instance.cosmeticPlayerManager != null) {
+            instance.crateMenu.open(instance.cosmeticPlayerManager.getCosmeticPlayer(player));
+        }
     }
 
 }

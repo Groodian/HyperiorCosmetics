@@ -2,7 +2,6 @@ package de.groodian.cosmetics.menu;
 
 import de.groodian.cosmetics.HyperiorCosmetic;
 import de.groodian.cosmetics.cosmetic.Rarity;
-import de.groodian.cosmetics.menu.Menu;
 import de.groodian.cosmetics.player.CosmeticPlayer;
 import de.groodian.hyperiorcore.main.HyperiorCore;
 import de.groodian.hyperiorcore.util.HSound;
@@ -62,7 +61,7 @@ public class CrateMenu extends Menu {
             public void run() {
                 List<String> loreInfo = new ArrayList<>();
                 loreInfo.add(" ");
-                for(Rarity rarity : Rarity.values()) {
+                for (Rarity rarity : Rarity.values()) {
                     loreInfo.add(rarity.getColor() + rarity.getName() + " §7- " + (rarity.getChance() / 100.0) + "%");
                 }
                 List<String> loreOpen = new ArrayList<>();

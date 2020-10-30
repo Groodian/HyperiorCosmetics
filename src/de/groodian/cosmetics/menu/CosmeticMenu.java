@@ -9,15 +9,9 @@ import de.groodian.hyperiorcore.util.HSound;
 import de.groodian.hyperiorcore.util.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class CosmeticMenu extends Menu {
 
@@ -89,28 +83,20 @@ public abstract class CosmeticMenu extends Menu {
     protected abstract void setCosmetics(CosmeticPlayer cosmeticPlayer, Inventory inventory, int page);
 
     protected void putCosmetic(final CosmeticPlayer cosmeticPlayer, final Inventory inventory, final Cosmetic cosmetic, final int slot, final int page) {
-        ItemStack itemStack = cosmetic.getInventoryItem().clone();
-        ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(cosmetic.getRarity().getColor() + "§l" + cosmetic.getName());
         MenuRunnable menuRunnable = null;
-        List<String> lore = new ArrayList<>();
-        lore.add(" ");
-        lore.add("§7Seltenheit: " + cosmetic.getRarity().getColor() + cosmetic.getRarity().getName());
-        lore.add("§7Kategorie: " + cosmetic.getCategory().getName());
-        lore.add("§7Preis: §e" + cosmetic.getPrice() + " Coins");
-        lore.add(" ");
+        ItemBuilder itemBuilder = new ItemBuilder(cosmetic.getInventoryItem().clone());
+        itemBuilder.addLore(" ");
         if (cosmeticPlayer.isOwningCosmetic(cosmetic)) {
-            itemMeta.addEnchant(Enchantment.DURABILITY, 0, true);
-            itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            itemBuilder.addGlow();
             if (cosmeticPlayer.isActiveCosmetic(cosmetic)) {
-                lore.add("§cKlicke zum Deaktivieren");
+                itemBuilder.addLore("§cKlicke zum Deaktivieren");
                 menuRunnable = clickData -> {
                     cosmeticPlayer.disableCosmetic(cosmetic.getCategory());
                     setCosmetics(cosmeticPlayer, inventory, page);
                     new HSound(Sound.CLICK).playFor(cosmeticPlayer.getPlayer());
                 };
             } else {
-                lore.add("§aKlicke zum Aktivieren");
+                itemBuilder.addLore("§aKlicke zum Aktivieren");
                 menuRunnable = clickData -> {
                     cosmeticPlayer.equip(cosmetic);
                     setCosmetics(cosmeticPlayer, inventory, page);
@@ -118,15 +104,15 @@ public abstract class CosmeticMenu extends Menu {
                 };
             }
         } else {
-            lore.add("§cDu besitzt diesen Gegenstand noch nicht!");
+            itemBuilder.addLore("§cDu besitzt diesen Gegenstand noch nicht!");
             if (HyperiorCore.getRanks().has(cosmeticPlayer.getUuid(), "cosmetics.buy")) {
                 int coins = HyperiorCore.getCoinSystem().getCoins(cosmeticPlayer.getUuid());
                 if (coins < cosmetic.getPrice()) {
-                    lore.add("§cDir fehlen §e" + (cosmetic.getPrice() - coins) + " Coins §cum");
-                    lore.add("§cden Gegenstand zu Kaufen.");
+                    itemBuilder.addLore("§cDir fehlen §e" + (cosmetic.getPrice() - coins) + " Coins §cum");
+                    itemBuilder.addLore("§cden Gegenstand zu Kaufen.");
                 } else {
-                    lore.add("§aKlicke um den Gegenstand");
-                    lore.add("§afür §e" + cosmetic.getPrice() + " Coins §azu Kaufen.");
+                    itemBuilder.addLore("§aKlicke um den Gegenstand");
+                    itemBuilder.addLore("§afür §e" + cosmetic.getPrice() + " Coins §azu Kaufen.");
                     menuRunnable = clickData -> {
                         HyperiorCore.getCoinSystem().removeCoins(cosmeticPlayer.getPlayer(), cosmetic.getPrice(), true);
                         cosmeticPlayer.addCosmetic(cosmetic);
@@ -135,14 +121,12 @@ public abstract class CosmeticMenu extends Menu {
                     };
                 }
             } else {
-                lore.add("§7Du kannst den Gegenstand");
-                lore.add("§7dem §eVIP-Rang §7kaufen.");
+                itemBuilder.addLore("§7Du kannst den Gegenstand");
+                itemBuilder.addLore("§7dem §eVIP-Rang §7kaufen.");
             }
         }
-        itemMeta.setLore(lore);
-        itemStack.setItemMeta(itemMeta);
 
-        putItem(inventory, itemStack, slot, menuRunnable);
+        putItem(inventory, itemBuilder.build(), slot, menuRunnable);
     }
 
 }
