@@ -23,6 +23,7 @@ public class HyperiorCosmetic extends JavaPlugin {
     private static HyperiorCosmetic instance;
 
     private long tick = 0;
+    private boolean enabled = true;
     private CosmeticPlayerManager cosmeticPlayerManager;
     private MainMenu mainMenu;
     private CrateMenu crateMenu;
@@ -43,7 +44,9 @@ public class HyperiorCosmetic extends JavaPlugin {
         mainMenu = new MainMenu(this);
         crateMenu = new CrateMenu(this);
 
-        Bukkit.getScheduler().runTaskTimer(this, () -> cosmeticPlayerManager.updateAll(tick++), 40, 1);
+        Bukkit.getScheduler().runTaskTimer(this, () -> {
+            if (enabled) cosmeticPlayerManager.updateAll(tick++);
+        }, 40, 1);
 
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§aGeladen!");
     }
@@ -67,8 +70,28 @@ public class HyperiorCosmetic extends JavaPlugin {
     }
 
     public static void openCrateMenu(Player player) {
-        if (instance.crateMenu != null && instance.cosmeticPlayerManager != null) {
-            instance.crateMenu.open(instance.cosmeticPlayerManager.getCosmeticPlayer(player));
+        if (instance != null) {
+            if (instance.crateMenu != null && instance.cosmeticPlayerManager != null) {
+                instance.crateMenu.open(instance.cosmeticPlayerManager.getCosmeticPlayer(player));
+            }
+        }
+    }
+
+    public static void enable() {
+        if (instance != null) {
+            if (instance.cosmeticPlayerManager != null) {
+                instance.cosmeticPlayerManager.resumeAll();
+                instance.enabled = true;
+            }
+        }
+    }
+
+    public static void disable() {
+        if (instance != null) {
+            if (instance.cosmeticPlayerManager != null) {
+                instance.cosmeticPlayerManager.pauseAll();
+                instance.enabled = false;
+            }
         }
     }
 

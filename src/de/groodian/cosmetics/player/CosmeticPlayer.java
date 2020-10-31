@@ -100,6 +100,18 @@ public class CosmeticPlayer {
         }
     }
 
+    public void pause() {
+        for (CosmeticHandler<?> cosmeticHandler : activeCosmetics.values()) {
+            cosmeticHandler.onDisable();
+        }
+    }
+
+    public void resume() {
+        for (CosmeticHandler<?> cosmeticHandler : activeCosmetics.values()) {
+            cosmeticHandler.onEquip();
+        }
+    }
+
     public void addCosmetic(Cosmetic cosmetic) {
         CosmeticMySQL.add(getPlayer(), cosmetic);
         int[] newCosmeticIds = new int[cosmeticIds.length + 1];

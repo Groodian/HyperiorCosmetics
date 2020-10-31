@@ -27,6 +27,18 @@ public class CosmeticPlayerManager {
         }
     }
 
+    public void pauseAll() {
+        for(CosmeticPlayer cosmeticPlayer: cosmeticPlayers) {
+            cosmeticPlayer.pause();
+        }
+    }
+
+    public void resumeAll() {
+        for(CosmeticPlayer cosmeticPlayer : cosmeticPlayers) {
+            cosmeticPlayer.resume();
+        }
+    }
+
     public CosmeticPlayer getCosmeticPlayer(Player player) {
         for (CosmeticPlayer cosmeticPlayer : cosmeticPlayers) {
             if (cosmeticPlayer.getPlayer().equals(player)) {
