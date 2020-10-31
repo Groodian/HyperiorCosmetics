@@ -94,28 +94,28 @@ public class ParticleCollection extends CosmeticCollection {
                         "Weiße Flügel",
                         Rarity.LEGENDARY,
                         new ItemBuilder(Material.FEATHER).build(),
-                        new Particle(EnumParticle.REDSTONE, false, 255, 255, 255, 1, 0, 0)
+                        new Particle(EnumParticle.REDSTONE, true, 255, 255, 255, 1, 0, 0)
                 ),
                 new WingParticleCosmetic(
                         210,
                         "Rote Flügel",
                         Rarity.LEGENDARY,
                         new ItemBuilder(Material.INK_SACK, (short) 1).build(),
-                        new Particle(EnumParticle.REDSTONE, false, 255, 0, 0, 1, 0, 0)
+                        new Particle(EnumParticle.REDSTONE, true, 255, 0, 0, 1, 0, 0)
                 ),
                 new WingParticleCosmetic(
                         211,
                         "Grüne Flügel",
                         Rarity.LEGENDARY,
                         new ItemBuilder(Material.INK_SACK, (short) 10).build(),
-                        new Particle(EnumParticle.REDSTONE, false, 127, 255, 0, 1, 0, 0)
+                        new Particle(EnumParticle.REDSTONE, true, 127, 255, 0, 1, 0, 0)
                 ),
                 new WingParticleCosmetic(
                         212,
                         "Orange Flügel",
                         Rarity.LEGENDARY,
                         new ItemBuilder(Material.INK_SACK, (short) 14).build(),
-                        new Particle(EnumParticle.REDSTONE, false, 255, 165, 0, 1, 0, 0)
+                        new Particle(EnumParticle.REDSTONE, true, 255, 165, 0, 1, 0, 0)
                 ),
                 new DefaultCosmetic(
                         RainbowWingParticleHandler.class,

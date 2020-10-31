@@ -39,7 +39,7 @@ public class DustParticleHandler extends ParticleHandler<DefaultCosmetic> {
         }
 
         for (float f = 0.1f; f < 0.5f; f += 0.1f) {
-            new Particle(EnumParticle.REDSTONE, false, red, green, blue, 1, 0, 0).send(cosmeticPlayer.getPlayer().getLocation().add(0, f, 0));
+            new Particle(EnumParticle.REDSTONE, true, red, green, blue, 1, 0, 0).send(cosmeticPlayer.getPlayer().getLocation().add(0, f, 0));
         }
     }
 

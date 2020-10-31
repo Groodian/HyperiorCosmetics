@@ -37,7 +37,7 @@ public class RainbowWingParticleHandler extends WingParticleHandler<DefaultCosme
                 blue--;
             }
         }
-        setWing(new Particle(EnumParticle.REDSTONE, false, red, green, blue, 1, 0, 0));
+        setWing(new Particle(EnumParticle.REDSTONE, true, red, green, blue, 1, 0, 0));
     }
 
     @Override
