@@ -23,7 +23,7 @@ public class DefaultCosmeticMenu extends CosmeticMenu {
     protected void setCosmetics(CosmeticPlayer cosmeticPlayer, Inventory inventory, int page) {
         int cosmeticPos = (page - 1) * cosmeticSlots.length;
         for (int i = 0; i < cosmeticSlots.length; i++) {
-            if (i >= cosmeticCollection.values().size()) {
+            if (cosmeticPos >= cosmeticCollection.values().size()) {
                 break;
             }
             putCosmetic(cosmeticPlayer, inventory, cosmeticCollection.values().get(cosmeticPos), cosmeticSlots[i], page);
