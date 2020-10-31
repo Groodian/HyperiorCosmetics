@@ -1,10 +1,6 @@
 name: HyperiorCosmetics_by_Groodian
-version: 4.7.3
+version: 4.7.4
 author: Groodian
 main: de.groodian.cosmetics.HyperiorCosmetic
 
 depend: [ HyperiorCore_by_Groodian ]
-
-commands:
-  ctest:
-    description: Test command

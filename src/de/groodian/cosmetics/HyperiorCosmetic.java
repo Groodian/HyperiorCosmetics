@@ -3,7 +3,6 @@ package de.groodian.cosmetics;
 import de.groodian.cosmetics.menu.CrateMenu;
 import de.groodian.cosmetics.menu.MainMenu;
 import de.groodian.cosmetics.player.CosmeticPlayerManager;
-import de.groodian.cosmetics.test.TestCommand;
 import de.groodian.hyperiorcore.util.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -37,8 +36,6 @@ public class HyperiorCosmetic extends JavaPlugin {
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new MainListener(this), this);
-
-        getCommand("ctest").setExecutor(new TestCommand(this));
 
         cosmeticPlayerManager = new CosmeticPlayerManager();
         mainMenu = new MainMenu(this);
