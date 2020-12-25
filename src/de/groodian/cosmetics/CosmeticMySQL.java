@@ -5,6 +5,7 @@ import de.groodian.cosmetics.cosmetic.Category;
 import de.groodian.cosmetics.cosmetic.Cosmetic;
 import de.groodian.hyperiorcore.main.HyperiorCore;
 import de.groodian.hyperiorcore.util.MySQL;
+import de.groodian.hyperiorcore.util.MySQLConnection;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.json.simple.JSONArray;
@@ -33,9 +34,11 @@ public class CosmeticMySQL {
      */
     public static int[] getCosmeticIds(UUID uuid) {
         try {
-            PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("SELECT cosmetics FROM cosmetic WHERE UUID = ?");
+            MySQLConnection connection = cosmeticMySQL.getMySQLConnection();
+            PreparedStatement ps = connection.getConnection().prepareStatement("SELECT cosmetics FROM cosmetic WHERE UUID = ?");
             ps.setString(1, uuid.toString().replaceAll("-", ""));
             ResultSet rs = ps.executeQuery();
+            int[] cosmetics = null;
             if (rs.next()) {
 
                 String cosmeticsString = rs.getString("cosmetics");
@@ -46,13 +49,14 @@ public class CosmeticMySQL {
                 JSONObject jsonObject = (JSONObject) JSONValue.parseWithException(cosmeticsString);
                 JSONArray jsonCosmetics = (JSONArray) JSONValue.parseWithException(jsonObject.get("cosmetics").toString());
 
-                int[] cosmetics = new int[jsonCosmetics.size()];
+                cosmetics = new int[jsonCosmetics.size()];
                 for (int i = 0; i < jsonCosmetics.size(); i++) {
                     cosmetics[i] = Integer.parseInt(jsonCosmetics.get(i).toString());
                 }
-
-                return cosmetics;
             }
+            ps.close();
+            connection.finish();
+            return cosmetics;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -64,12 +68,17 @@ public class CosmeticMySQL {
      */
     public static int getActivatedCosmeticId(UUID uuid, Category category) {
         try {
-            PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("SELECT " + category + " FROM cosmetic WHERE UUID = ?");
+            MySQLConnection connection = cosmeticMySQL.getMySQLConnection();
+            PreparedStatement ps = connection.getConnection().prepareStatement("SELECT " + category + " FROM cosmetic WHERE UUID = ?");
             ps.setString(1, uuid.toString().replaceAll("-", ""));
             ResultSet rs = ps.executeQuery();
+            int cosmeticId = -1;
             if (rs.next()) {
-                return rs.getInt(category.toString());
+                cosmeticId = rs.getInt(category.toString());
             }
+            ps.close();
+            connection.finish();
+            return cosmeticId;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -98,21 +107,27 @@ public class CosmeticMySQL {
 
             if (isUserExists(player)) {
                 try {
-                    PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("UPDATE cosmetic SET cosmetics = ?, playername = ? WHERE UUID = ?");
+                    MySQLConnection connection = cosmeticMySQL.getMySQLConnection();
+                    PreparedStatement ps = connection.getConnection().prepareStatement("UPDATE cosmetic SET cosmetics = ?, playername = ? WHERE UUID = ?");
                     ps.setString(1, cosmetics);
                     ps.setString(2, player.getPlayer().getName());
                     ps.setString(3, player.getPlayer().getUniqueId().toString().replaceAll("-", ""));
                     ps.executeUpdate();
+                    ps.close();
+                    connection.finish();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             } else {
                 try {
-                    PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("INSERT INTO cosmetic (UUID,playername,cosmetics) VALUES (?,?,?)");
+                    MySQLConnection connection = cosmeticMySQL.getMySQLConnection();
+                    PreparedStatement ps = connection.getConnection().prepareStatement("INSERT INTO cosmetic (UUID,playername,cosmetics) VALUES (?,?,?)");
                     ps.setString(1, player.getPlayer().getUniqueId().toString().replaceAll("-", ""));
                     ps.setString(2, player.getPlayer().getName());
                     ps.setString(3, cosmetics);
                     ps.executeUpdate();
+                    ps.close();
+                    connection.finish();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -138,21 +153,27 @@ public class CosmeticMySQL {
         Bukkit.getScheduler().runTaskAsynchronously(hyperiorCosmetic, () -> {
             if (isUserExists(player)) {
                 try {
-                    PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("UPDATE cosmetic SET " + category + " = ?, playername = ? WHERE UUID = ?");
+                    MySQLConnection connection = cosmeticMySQL.getMySQLConnection();
+                    PreparedStatement ps = connection.getConnection().prepareStatement("UPDATE cosmetic SET " + category + " = ?, playername = ? WHERE UUID = ?");
                     ps.setInt(1, cosmeticId);
                     ps.setString(2, player.getPlayer().getName());
                     ps.setString(3, player.getPlayer().getUniqueId().toString().replaceAll("-", ""));
                     ps.executeUpdate();
+                    ps.close();
+                    connection.finish();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             } else {
                 try {
-                    PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("INSERT INTO cosmetic (UUID,playername," + category + ") VALUES (?,?,?)");
+                    MySQLConnection connection = cosmeticMySQL.getMySQLConnection();
+                    PreparedStatement ps = connection.getConnection().prepareStatement("INSERT INTO cosmetic (UUID,playername," + category + ") VALUES (?,?,?)");
                     ps.setString(1, player.getPlayer().getUniqueId().toString().replaceAll("-", ""));
                     ps.setString(2, player.getPlayer().getName());
                     ps.setInt(3, cosmeticId);
                     ps.executeUpdate();
+                    ps.close();
+                    connection.finish();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -162,10 +183,14 @@ public class CosmeticMySQL {
 
     private static boolean isUserExists(Player player) {
         try {
-            PreparedStatement ps = cosmeticMySQL.getConnection().prepareStatement("SELECT cosmetics FROM cosmetic WHERE UUID = ?");
+            MySQLConnection connection = cosmeticMySQL.getMySQLConnection();
+            PreparedStatement ps = connection.getConnection().prepareStatement("SELECT cosmetics FROM cosmetic WHERE UUID = ?");
             ps.setString(1, player.getPlayer().getUniqueId().toString().replaceAll("-", ""));
             ResultSet rs = ps.executeQuery();
-            return rs.next();
+            boolean userExists = rs.next();
+            ps.close();
+            connection.finish();
+            return userExists;
         } catch (SQLException e) {
             e.printStackTrace();
         }
