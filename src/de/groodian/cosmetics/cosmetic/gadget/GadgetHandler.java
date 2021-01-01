@@ -48,7 +48,7 @@ public abstract class GadgetHandler<T extends GadgetCosmetic> extends CosmeticHa
 
     @EventHandler
     public void handleInteract(PlayerInteractEvent e) {
-        if(cosmeticPlayer.getHyperiorCosmetic().isEnabled()) {
+        if (cosmeticPlayer.getHyperiorCosmetic().isEnabled()) {
             if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
                 if (e.getPlayer().equals(cosmeticPlayer.getPlayer())) {
                     if (e.getItem() != null) {
