@@ -92,4 +92,8 @@ public class HyperiorCosmetic extends JavaPlugin {
         }
     }
 
+    public boolean isActive() {
+        return enabled;
+    }
+
 }
