@@ -26,11 +26,19 @@ public class MainListener implements Listener {
 
     @EventHandler
     public void handlePlayerJoin(PlayerJoinEvent e) {
-        Player player = e.getPlayer();
-        player.getInventory().setItem(HyperiorCosmetic.COSMETIC_SLOT, HyperiorCosmetic.COSMETIC_ITEM);
-        player.getInventory().setItem(HyperiorCosmetic.GADGET_SLOT, HyperiorCosmetic.NO_GADGET_EQUIPPED_ITEM);
-        CosmeticPlayer cosmeticPlayer = hyperiorCosmetic.getCosmeticPlayerManager().getCosmeticPlayer(player);
-        cosmeticPlayer.activateCosmeticsToActivate();
+            Player player = e.getPlayer();
+
+            if(hyperiorCosmetic.isEnabled()) {
+                player.getInventory().setItem(HyperiorCosmetic.COSMETIC_SLOT, HyperiorCosmetic.COSMETIC_ITEM);
+                player.getInventory().setItem(HyperiorCosmetic.GADGET_SLOT, HyperiorCosmetic.NO_GADGET_EQUIPPED_ITEM);
+            }
+
+            CosmeticPlayer cosmeticPlayer = hyperiorCosmetic.getCosmeticPlayerManager().getCosmeticPlayer(player);
+            cosmeticPlayer.activateCosmeticsToActivate();
+
+            if(hyperiorCosmetic.isEnabled()) {
+                cosmeticPlayer.pause();
+            }
     }
 
     @EventHandler

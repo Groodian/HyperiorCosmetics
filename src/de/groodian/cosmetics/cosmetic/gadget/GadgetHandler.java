@@ -48,14 +48,16 @@ public abstract class GadgetHandler<T extends GadgetCosmetic> extends CosmeticHa
 
     @EventHandler
     public void handleInteract(PlayerInteractEvent e) {
-        if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (e.getPlayer().equals(cosmeticPlayer.getPlayer())) {
-                if (e.getItem() != null) {
-                    if (e.getItem().equals(cosmetic.getGadgetItem())) {
-                        e.setCancelled(true);
-                        if (timeout <= 0) {
-                            onRightClickAndNoTimeout(e);
-                            timeout = cosmetic.getDelay();
+        if(cosmeticPlayer.getHyperiorCosmetic().isEnabled()) {
+            if (e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+                if (e.getPlayer().equals(cosmeticPlayer.getPlayer())) {
+                    if (e.getItem() != null) {
+                        if (e.getItem().equals(cosmetic.getGadgetItem())) {
+                            e.setCancelled(true);
+                            if (timeout <= 0) {
+                                onRightClickAndNoTimeout(e);
+                                timeout = cosmetic.getDelay();
+                            }
                         }
                     }
                 }
