@@ -18,6 +18,8 @@ public class CosmeticPlayerManager {
     }
 
     public void unregisterPlayer(CosmeticPlayer cosmeticPlayer) {
+        // To call on every active cosmetic onDisable!
+        cosmeticPlayer.pause();
         cosmeticPlayers.remove(cosmeticPlayer);
     }
 

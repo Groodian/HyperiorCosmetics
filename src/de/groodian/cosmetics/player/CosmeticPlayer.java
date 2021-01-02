@@ -5,6 +5,7 @@ import de.groodian.cosmetics.HyperiorCosmetic;
 import de.groodian.cosmetics.cosmetic.Category;
 import de.groodian.cosmetics.cosmetic.Cosmetic;
 import de.groodian.cosmetics.cosmetic.CosmeticHandler;
+import de.groodian.hyperiorcore.main.HyperiorCore;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -107,8 +108,14 @@ public class CosmeticPlayer {
     }
 
     public void resume() {
-        for (CosmeticHandler<?> cosmeticHandler : activeCosmetics.values()) {
-            cosmeticHandler.onEquip();
+        if (!HyperiorCore.getPrefix().isSpectator(getPlayer())) {
+            if (cosmeticsToActivate.isEmpty()) {
+                for (CosmeticHandler<?> cosmeticHandler : activeCosmetics.values()) {
+                    cosmeticHandler.onEquip();
+                }
+            } else {
+                activateCosmeticsToActivate();
+            }
         }
     }
 

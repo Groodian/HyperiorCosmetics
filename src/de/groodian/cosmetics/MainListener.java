@@ -1,8 +1,10 @@
 package de.groodian.cosmetics;
 
 import de.groodian.cosmetics.player.CosmeticPlayer;
+import de.groodian.hyperiorcore.main.HyperiorCore;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
@@ -24,20 +26,15 @@ public class MainListener implements Listener {
         hyperiorCosmetic.getCosmeticPlayerManager().registerPlayer(cosmeticPlayer);
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void handlePlayerJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
 
-        if (hyperiorCosmetic.isActive()) {
+        if (hyperiorCosmetic.isActive() && !HyperiorCore.getPrefix().isSpectator(player)) {
             player.getInventory().setItem(HyperiorCosmetic.COSMETIC_SLOT, HyperiorCosmetic.COSMETIC_ITEM);
             player.getInventory().setItem(HyperiorCosmetic.GADGET_SLOT, HyperiorCosmetic.NO_GADGET_EQUIPPED_ITEM);
-        }
-
-        CosmeticPlayer cosmeticPlayer = hyperiorCosmetic.getCosmeticPlayerManager().getCosmeticPlayer(player);
-        cosmeticPlayer.activateCosmeticsToActivate();
-
-        if (hyperiorCosmetic.isActive()) {
-            cosmeticPlayer.pause();
+            CosmeticPlayer cosmeticPlayer = hyperiorCosmetic.getCosmeticPlayerManager().getCosmeticPlayer(player);
+            cosmeticPlayer.activateCosmeticsToActivate();
         }
     }
 
