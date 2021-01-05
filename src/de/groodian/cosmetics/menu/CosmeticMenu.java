@@ -121,7 +121,7 @@ public abstract class CosmeticMenu extends Menu {
                     };
                 }
             } else {
-                itemBuilder.addLore("§7Du kannst den Gegenstand");
+                itemBuilder.addLore("§7Du kannst den Gegenstand mit");
                 itemBuilder.addLore("§7dem §eVIP-Rang §7kaufen.");
             }
         }
